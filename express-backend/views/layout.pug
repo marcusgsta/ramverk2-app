@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title= title
+        block style
+            link(rel="stylesheet", href="/css/style.css")
+            <link rel="shortcut icon" type="image/png" href="/img/express_icon.png"/>
+    body
+        block header
+            div(class="site-header")
+                <img id="icon" src="/img/express_icon.png">
+                    navbar(class="site-navbar")
+                        nav
+                            ul
+                                li
+                                    <a href="/">Hem</a>
+                                li
+                                    <a href="about">Om</a>
+                                li
+                                    <a href="report">Redovisningar</a>
+        block main
+            main(class="main") Mainblock
+        block footer
+            div(class="site-footer")
+                p Copyright (c) by Marcus Gustafsson
+        block script
+            // script(src="/js/move.js")

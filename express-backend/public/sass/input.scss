@@ -1,0 +1,120 @@
+// @import 'normalize';
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+// mixins
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// Header
+// Nav
+
+.site-header {
+    overflow: auto;
+    }
+
+#icon {
+    float:left;
+}
+
+// navbar {
+//     position:relative;
+// }
+
+nav {
+    padding: 35px 0 35px 120px;
+    height:100%;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+    background-color: #eefad7;
+    @include border-radius(10px);
+  }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: #333;
+  }
+
+  li:hover {
+      background-color:#d1ffea;
+  }
+}
+
+
+// Body
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+  width: 80%;
+  margin: 0 auto;
+  height:800px;
+}
+
+
+// main
+
+body {
+    clear:both;
+    padding-top:24px;
+}
+
+#portrait { @include border-radius(5px); }
+
+// .tree {
+//     z-index: -10;
+//     width: 50%;
+//     bottom: 0;
+// }
+//
+// .tree img {
+//     width: 100%;
+// }
+
+// general
+
+.right {
+    float:right;
+}
+
+.left {
+    float:left;
+}
+
+// messages
+
+.message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  @extend .message;
+  border-color: green;
+}
+
+.error {
+  @extend .message;
+  border-color: red;
+}
+
+.warning {
+  @extend .message;
+  border-color: yellow;
+}
