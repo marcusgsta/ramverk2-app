@@ -4,19 +4,19 @@
   "description": "Express me-page app for the course ramverk2",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node src/server.js",
     "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcusgsta/ramverk2.git"
+    "url": "git+https://github.com/marcusgsta/ramverk2-app.git"
   },
   "author": "Marcus Gustafsson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcusgsta/ramverk2/issues"
+    "url": "https://github.com/marcusgsta/ramverk2-app/issues"
   },
-  "homepage": "https://github.com/marcusgsta/ramverk2#readme",
+  "homepage": "https://github.com/marcusgsta/ramverk2-app#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",

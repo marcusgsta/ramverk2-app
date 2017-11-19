@@ -1,4 +1,3 @@
-//server.js
 const app = require('./index');
 
 // get env variable DBWEBB_PORT

@@ -14,3 +14,6 @@ build:
                 coverage:
                     file: 'react-frontend/coverage/clover.xml'
                     format: 'clover'
+filter:
+    excluded_paths:
+        - "express-backend/coverage/"
