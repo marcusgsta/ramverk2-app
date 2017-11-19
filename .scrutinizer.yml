@@ -10,13 +10,7 @@ build:
         override:
             -
                 #command: 'istanbul cover --report clover test.js'
-                command: 'npm test'
+                command: 'cd react-frontend && npm test'
                 coverage:
                     file: 'react-frontend/coverage/clover.xml'
                     format: 'clover'
-filter:
-    excluded_paths:
-        - "express-backend/coverage/"
-tools:
-    external_code_coverage:
-        runs: 2    # Scrutinizer will wait for two code coverage submissions
