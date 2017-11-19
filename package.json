@@ -4,9 +4,9 @@
   "description": "Me-page with express and react",
   "main": "react-frontend/index.js",
   "scripts": {
-    "start": "node express-backend/index.js",
+    "start": "node express-backend/src/server.js",
     "start-client": "cd react-frontend && npm start",
-    "start-backend": "node express-backend/index.js",
+    "start-backend": "node express-backend/src/server.js",
     "start-dev": "concurrently --kill-others \"npm run start-client\" \"npm run start-backend\"",
     "install": "cd react-frontend && npm install && npm run build",
     "test": "cd react-frontend && npm test && npm test -- --coverage",
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/marcusgsta/ramverk2#readme",
   "devDependencies": {
+    "ajv": "5.0.3-beta.0",
     "babel-eslint": "^8.0.2",
     "clean-css-cli": "^4.1.10",
     "codecov": "^3.0.0",
@@ -37,6 +38,7 @@
     "gulp-postcss": "^7.0.0",
     "html-minifier": "^3.5.6",
     "htmlhint": "^0.9.13",
+    "jest": "^21.2.1",
     "js-yaml": "^3.10.0",
     "jscs": "^3.0.7",
     "jsonlint": "^1.6.2",
@@ -46,8 +48,7 @@
     "postcss-scss": "^1.0.2",
     "stylelint": "^8.2.0",
     "stylelint-config-recommended-scss": "^2.0.0",
-    "stylelint-scss": "^2.1.0",
-    "ajv": "5.0.3-beta.0"
+    "stylelint-scss": "^2.1.0"
   },
   "dependencies": {
     "concurrently": "^3.5.0",

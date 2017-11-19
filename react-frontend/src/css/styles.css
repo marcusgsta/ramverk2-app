@@ -1,3 +1,9 @@
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
 .site-header {
   overflow: auto; }
 
@@ -30,12 +36,15 @@ nav {
 body {
   font: 110% Helvetica, sans-serif;
   color: #333;
-  background-color: #fff;
+  background-color: #007ebd;
   width: 80%;
   margin: 0 auto;
   height: 800px;
   clear: both;
   padding-top: 24px; }
+
+hr {
+  border-color: #99ddff; }
 
 @media screen and (min-width: 700px) {
   .main {
@@ -48,6 +57,16 @@ body {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   border-radius: 5px; }
+
+img#express {
+  border-radius: 3px; }
+
+.site-footer {
+  background-color: #99ddff;
+  border-radius: 3px;
+  height: 100px;
+  padding: 8px;
+  margin: 20px 0 20px 0; }
 
 .right {
   float: right; }

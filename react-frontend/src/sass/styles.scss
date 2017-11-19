@@ -1,4 +1,5 @@
 // @import 'normalize';
+@import 'patternlab/scss/00-settings/_global-variables.scss';
 
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
@@ -63,7 +64,7 @@ nav {
 body {
   font: 110% $font-stack;
   color: $primary-color;
-  background-color: $background-color;
+  background-color: $color-cerulean;
   width: 80%;
   margin: 0 auto;
   height:800px;
@@ -71,6 +72,9 @@ body {
   padding-top:24px;
 }
 
+hr {
+    border-color: $color-baby-blue;
+}
 
 // .main
 
@@ -97,6 +101,28 @@ body {
 // .tree img {
 //     width: 100%;
 // }
+
+// About
+
+img#express {
+    border-radius: $border-radius-base;
+}
+
+.users {
+    li {
+
+    }
+}
+
+// footer
+
+.site-footer {
+    background-color: $color-baby-blue;
+    border-radius: $border-radius-base;
+    height: 100px;
+    padding:8px;
+    margin: 20px 0 20px 0;
+}
 
 // general
 
