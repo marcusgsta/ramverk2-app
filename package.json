@@ -9,7 +9,7 @@
     "start-backend": "node express-backend/src/server.js",
     "start-dev": "concurrently --kill-others \"npm run start-client\" \"npm run start-backend\"",
     "install": "cd react-frontend && npm install && npm run build",
-    "test": "cd react-frontend && npm test && npm test -- --coverage",
+    "test": "cd react-frontend && npm test && cd ../express-backend && npm test",
     "test1": "docker-compose run node7 && npm test",
     "test2": "docker-compose run node8 && npm test",
     "test3": "docker-compose run node9 && npm test"

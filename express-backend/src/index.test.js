@@ -19,21 +19,6 @@ describe('Test non correct path', () => {
     });
 });
 
-// describe('GET /report', () => {
-//     test('Test report path. It should response the GET method', (done) => {
-//         request(app).get('/report').then((response) => {
-//             expect(response.statusCode).toBe(200);
-//             done();
-//         });
-//     });
-// });
-
-
-describe('Test the root path', () => {
-    test('It should response the GET method', () => {
-        return request(app).get('/about').expect(200);
-    });
-});
 
 describe('GET /users', () => {
     test('respond with json', (done) => {
