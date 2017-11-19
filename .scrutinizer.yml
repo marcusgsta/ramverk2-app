@@ -12,5 +12,5 @@ build:
                 #command: 'istanbul cover --report clover test.js'
                 command: 'cd react-frontend && npm test'
                 coverage:
-                    file: 'react-frontend/coverage/clover.xml'
+                    file: 'coverage/clover.xml'
                     format: 'clover'
