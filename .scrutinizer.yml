@@ -17,3 +17,6 @@ build:
 filter:
     excluded_paths:
         - "express-backend/coverage/"
+tools:
+    external_code_coverage:
+        runs: 2    # Scrutinizer will wait for two code coverage submissions
