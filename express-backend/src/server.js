@@ -10,7 +10,7 @@ if (typeof process.env.DBWEBB_PORT !== 'undefined') {
 }
 
 // Start up server
-// app.listen(process.env.PORT || PORT, () => {
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
+// app.listen(PORT, () => {
     console.log("Express is listening on port " + PORT);
 });
