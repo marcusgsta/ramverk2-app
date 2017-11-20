@@ -1,7 +1,7 @@
 {
   "name": "ramverk2",
   "version": "2.0.3",
-  "description": "Me-page with express and react",
+  "description": "App with express and react",
   "main": "react-frontend/index.js",
   "scripts": {
     "start": "node express-backend/src/server.js",
@@ -9,7 +9,7 @@
     "start-backend": "node express-backend/src/server.js",
     "start-dev": "concurrently --kill-others \"npm run start-client\" \"npm run start-backend\"",
     "install": "cd react-frontend && npm install && npm run build",
-    "test": "cd react-frontend && npm test && cd ../express-backend && npm test && cd ../",
+    "test": "cd react-frontend && npm test && cd ../express-backend && npm test",
     "test1": "docker-compose run node7 && npm test",
     "test2": "docker-compose run node8 && npm test",
     "test3": "docker-compose run node9 && npm test"
