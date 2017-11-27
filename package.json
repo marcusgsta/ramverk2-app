@@ -15,7 +15,7 @@
     "test3": "docker-compose run node9 && npm test",
     "posttest": "make test",
     "heroku-postbuild": "cd react-frontend && npm install --only=dev && npm install && npm run build"
-}
+},
   },
   "repository": {
     "type": "git",
