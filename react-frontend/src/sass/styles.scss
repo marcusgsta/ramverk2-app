@@ -1,5 +1,8 @@
 // @import 'normalize';
 @import 'patternlab/scss/00-settings/_global-variables.scss';
+@import 'patternlab/scss/01-tools/_mixins.scss';
+@import 'patternlab/scss/04-components/_button.scss';
+@import 'patternlab/scss/04-components/navigation/_primary-nav.scss';
 
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
@@ -90,6 +93,8 @@ hr {
     }
 }
 
+
+
 #portrait { @include border-radius(5px); }
 
 // About
@@ -98,10 +103,52 @@ img#express {
     border-radius: $border-radius-base;
 }
 
-.users {
-    li {
+.messages {
+  background-color: #eee;
+  padding: 12px;
+  height: 220px;
+  overflow: scroll;
+  scroll-behavior: auto;
+  color: #000;
+  border-radius: $border-radius-base;
+}
 
-    }
+.feedback {
+  color: #697130;
+  font-style: italic; }
+
+.main {
+    margin: 0 auto;
+}
+
+.chat h1,
+.chat p {
+    text-align: center;
+}
+
+.chat-input {
+  margin: 0 auto;
+  margin-top: 16px;
+  width: 500px;
+}
+
+input.form-control {
+  font-size: 16px;
+  padding: 4px;
+  margin: 0 0 8px 0;
+  width: 100%;
+  text-align: center;
+  border-radius: $border-radius-base;
+}
+
+.send-button {
+  font-size: 24px;
+  padding: 4px;
+  width: 100%;}
+
+.button {
+    width:100%;
+    margin: 16px 0 16px 0;
 }
 
 // footer
@@ -111,7 +158,7 @@ img#express {
     border-radius: $border-radius-base;
     height: 100px;
     padding:8px;
-    margin: 20px 0 20px 0;
+    margin: 20px 0;
 }
 
 // general
@@ -145,4 +192,13 @@ img#express {
 .warning {
   @extend .message;
   border-color: yellow;
+}
+
+@media screen and (max-width: 1000px) {
+    .chat {
+        width: 100%;
+    }
+    .chat-input {
+        width: 100%;
+    }
 }

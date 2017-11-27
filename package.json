@@ -2,7 +2,7 @@
   "name": "ramverk2",
   "version": "2.0.3",
   "description": "App with express and react",
-  "main": "react-frontend/index.js",
+  "main": "express-backend/index.js",
   "scripts": {
     "start": "node express-backend/src/server.js",
     "start-client": "cd react-frontend && npm start",
@@ -12,7 +12,8 @@
     "test": "cd react-frontend && npm test && cd ../express-backend && npm test",
     "test1": "docker-compose run node7 && npm test",
     "test2": "docker-compose run node8 && npm test",
-    "test3": "docker-compose run node9 && npm test"
+    "test3": "docker-compose run node9 && npm test",
+    "posttest": "make test"
   },
   "repository": {
     "type": "git",

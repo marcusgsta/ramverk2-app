@@ -2,13 +2,17 @@
 "use strict";
 var express = require("express");
 var path = require("path");
-var index = require('../routes/index');
-var about = require('../routes/about');
-var users = require('../routes/users');
+
+// routes
+var index = require(__dirname + '/routes/index');
+var about = require(__dirname + '/routes/about');
+var users = require(__dirname + '/routes/users');
+var chat = require(__dirname + '/routes/chat');
+
 var app = express();
 
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 // Serve static files
 // var staticFiles = path.join(__dirname, "public");
@@ -28,12 +32,13 @@ app.use((req, res, next) => {
 // Catch all, send react app via index.html if no previous match
 app.get("/", (req, res, next) => {
     // Path to index.html in client build directory
-    res.sendFile(path.join(__dirname + '/../../react-frontend/build/index.html'));
+    res.sendFile(path.join(__dirname + '/../react-frontend/build/index.html'));
 });
 
 app.use('/', index);
 app.use('/about', about);
 app.use('/users', users);
+app.use('/chat', chat);
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
     let err = new Error("Not Found");
