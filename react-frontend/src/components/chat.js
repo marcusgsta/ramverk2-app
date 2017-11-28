@@ -15,7 +15,6 @@ const Message = ({message}) => (
 );
 
 Message.propTypes = {
-    // message: PropTypes.string.isRequired,
     message: PropTypes.object.isRequired
 };
 
@@ -30,29 +29,21 @@ export class Chat extends Component {
             shouldHandleKeyPress: true
         };
         this.sendMessage = this.sendMessage.bind(this);
-        //this.addMessage = this.addMessage.bind(this);
         this.sendFeedback = this.sendFeedback.bind(this);
-        //this.componentDidMount = this.componentDidMount.bind(this);
     }
 
     componentDidMount() {
         this.socket = io();
 
         this.socket.on("RECEIVE_MESSAGE", (data) => {
-        // this.socket.on('RECEIVE_MESSAGE', function(data) {
-            // this.removeFeedback();
-            // this.setState({feedback: ''});
-            // this.setState(({ feedback }) => ({ feedback: [] }));
-
             this.setState({shouldHandleKeyPress: true});
-            // this.addMessage(data);
+
             this.setState({messages: [...this.state.messages, data]});
             updateScroll();
         });
 
         this.socket.on('TYPING', (data) => {
             console.log('data: ' + data);
-            // this.fixFeedback(data);
             if (this.state.shouldHandleKeyPress === true) {
                 this.setState({feedback: [this.state.feedback, data.author + ' skriver ett meddelande...']});
                 this.setState({shouldHandleKeyPress: false});

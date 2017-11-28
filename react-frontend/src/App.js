@@ -29,7 +29,7 @@ export class App extends React.Component {
                         </ul>
                         {/* </navbar> */}
                     </div>
-                    <hr/>
+                    {/* <hr/> */}
                     <div className="main">
 
                         <Route exact path="/" component={Home}/>

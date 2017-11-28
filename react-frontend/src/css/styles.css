@@ -241,29 +241,22 @@ html {
 #icon {
   float: left; }
 
-nav {
-  padding: 35px 0 35px 120px;
-  height: 100%; }
-  nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-  nav li {
-    display: inline-block;
-    background-color: #eefad7;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    border-radius: 10px;
-    margin-right: 4px; }
-  nav a {
-    display: block;
-    padding: 6px 12px;
-    text-decoration: none;
-    color: #333; }
-  nav li:hover {
-    background-color: #d1ffea; }
+.primary-nav {
+  margin-top: 20px; }
 
+@media screen and (max-width: 760px) {
+  .primary-nav {
+    margin-top: 0; } }
+.primary-nav li a {
+  color: #000;
+  text-decoration: none; }
+
+.primary-nav li a:hover {
+  color: blue; }
+
+@media screen and (max-width: 760px) {
+  #icon {
+    display: none; } }
 body {
   font: 110% Helvetica, sans-serif;
   color: #333;
@@ -320,7 +313,7 @@ img#express {
 input.form-control {
   font-size: 16px;
   padding: 4px;
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   width: 100%;
   text-align: center;
   border-radius: 3px; }
@@ -332,7 +325,7 @@ input.form-control {
 
 .button {
   width: 100%;
-  margin: 16px 0 16px 0; }
+  margin: 16px 0; }
 
 .site-footer {
   background-color: #99ddff;

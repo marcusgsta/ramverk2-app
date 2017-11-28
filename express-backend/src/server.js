@@ -7,7 +7,7 @@ var PORT;
 if (typeof process.env.DBWEBB_PORT !== 'undefined') {
     PORT = process.env.DBWEBB_PORT;
 } else {
-    PORT = 1337;
+    PORT = 1339;
 }
 
 // Start up server
