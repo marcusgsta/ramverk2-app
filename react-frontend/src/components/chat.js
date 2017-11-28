@@ -2,7 +2,11 @@ import React, {Component} from 'react';
 import io from "socket.io-client";
 import PropTypes from 'prop-types';
 
-var PORT = process.env.PORT || PORT || process.env.DBWEBB_PORT;
+function updateScroll() {
+    var element = document.querySelector(".messages");
+
+    element.scrollTop = element.scrollHeight;
+}
 
 const Message = ({message}) => (
     <div className="chatMessage">
@@ -25,60 +29,51 @@ export class Chat extends Component {
             feedback: '',
             shouldHandleKeyPress: true
         };
-        // this.socket = io('localhost:1337');
-        // this.socket = io('localhost:' + 1337);
-        this.socket = io(PORT);
+        this.sendMessage = this.sendMessage.bind(this);
+        //this.addMessage = this.addMessage.bind(this);
+        this.sendFeedback = this.sendFeedback.bind(this);
+        //this.componentDidMount = this.componentDidMount.bind(this);
+    }
 
-        this.sendMessage = ev => {
-            ev.preventDefault();
-            this.socket.emit('SEND_MESSAGE', {
-                author: this.state.username,
-                message: this.state.message
-            });
-            this.setState({message: ''});
-        };
+    componentDidMount() {
+        this.socket = io();
 
-        this.sendFeedback = () => {
-            this.socket.emit('TYPING', {
-                author: this.state.username
-            });
-        };
+        this.socket.on("RECEIVE_MESSAGE", (data) => {
+        // this.socket.on('RECEIVE_MESSAGE', function(data) {
+            // this.removeFeedback();
+            // this.setState({feedback: ''});
+            // this.setState(({ feedback }) => ({ feedback: [] }));
 
-        this.socket.on('RECEIVE_MESSAGE', function(data) {
-            removeFeedback();
-            addMessage(data);
+            this.setState({shouldHandleKeyPress: true});
+            // this.addMessage(data);
+            this.setState({messages: [...this.state.messages, data]});
             updateScroll();
         });
 
-        this.socket.on('TYPING', function(data) {
+        this.socket.on('TYPING', (data) => {
             console.log('data: ' + data);
-            sendFeedback(data);
-            updateScroll();
-        });
-
-        const updateScroll = () => {
-            var element = document.querySelector(".messages");
-
-            element.scrollTop = element.scrollHeight;
-        };
-
-        const sendFeedback = data => {
+            // this.fixFeedback(data);
             if (this.state.shouldHandleKeyPress === true) {
                 this.setState({feedback: [this.state.feedback, data.author + ' skriver ett meddelande...']});
                 this.setState({shouldHandleKeyPress: false});
             }
-        };
+            updateScroll();
+        });
+    }
 
-        const removeFeedback = () => {
-            this.setState({feedback: ''});
-            this.setState({shouldHandleKeyPress: true});
-        };
+    sendMessage(ev) {
+        ev.preventDefault();
+        this.socket.emit('SEND_MESSAGE', {
+            author: this.state.username,
+            message: this.state.message
+        });
+        this.setState({message: ''});
+    }
 
-        const addMessage = data => {
-            console.log(data);
-            this.setState({messages: [...this.state.messages, data]});
-            console.log(this.state.messages);
-        };
+    sendFeedback() {
+        this.socket.emit('TYPING', {
+            author: this.state.username
+        });
     }
 
     render() {
