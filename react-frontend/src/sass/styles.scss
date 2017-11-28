@@ -29,7 +29,8 @@ $background-color: #fff;
 }
 
 .primary-nav {
-    margin-top:20px;
+    margin-top: 26px;
+    padding-left: 20px;
 }
 
 @media screen and (max-width: 760px) {
@@ -126,6 +127,9 @@ hr {
 
 img#express {
     border-radius: $border-radius-base;
+    display: block;
+    margin: 0 auto;
+    width:80%;
 }
 
 .messages {

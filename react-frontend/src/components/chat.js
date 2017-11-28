@@ -37,7 +37,7 @@ export class Chat extends Component {
 
         this.socket.on("RECEIVE_MESSAGE", (data) => {
             this.setState({shouldHandleKeyPress: true});
-
+            this.setState({feedback: ''});
             this.setState({messages: [...this.state.messages, data]});
             updateScroll();
         });
