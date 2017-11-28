@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import io from "socket.io-client";
 import PropTypes from 'prop-types';
 
+var PORT = process.env.PORT || PORT || process.env.DBWEBB_PORT;
+
 const Message = ({message}) => (
     <div className="chatMessage">
         <div>{message.author}: {message.message}</div>
@@ -24,7 +26,8 @@ export class Chat extends Component {
             shouldHandleKeyPress: true
         };
         // this.socket = io('localhost:1337');
-        this.socket = io('localhost:' + 1337);
+        // this.socket = io('localhost:' + 1337);
+        this.socket = io(PORT);
 
         this.sendMessage = ev => {
             ev.preventDefault();
@@ -53,10 +56,9 @@ export class Chat extends Component {
             updateScroll();
         });
 
-        const updateScroll = (element=null) => {
-            if (element === null) {
-                element = document.querySelector(".messages");
-            }
+        const updateScroll = () => {
+            var element = document.querySelector(".messages");
+
             element.scrollTop = element.scrollHeight;
         };
 
