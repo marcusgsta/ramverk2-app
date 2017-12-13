@@ -11,7 +11,7 @@ router.get("/", async (request, response) => {
     let model = new Model();
 
     try {
-        let res = await model.findInCollection(dsn, "math", {}, {}, 0);
+        let res = await model.findInCollection(dsn, "formulas", {}, {}, 0);
 
         console.log(res);
         response.json(res);

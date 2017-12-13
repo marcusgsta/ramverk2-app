@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Kvadreringsregeln",
+        "formula": "(a+b)^2=a^2+2b+b^2",
+        "description": "Algebra"
+    },
+    {
+        "name": "Konjugatregeln",
+        "formula": "(a+b)(a-b) = a2-b2",
+        "description": "Algebra"
+    },
+    {
+        "name": "Derivatans definition",
+        "formula": "f'(x)=lim h->0 f(x+h)-f(x) / h",
+        "description": "Innebär förändringshastigheten för en annan känd funktion"
+    }
+]

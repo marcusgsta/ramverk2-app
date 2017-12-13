@@ -15,7 +15,7 @@ router.post("/", async (request, response) => {
         var name = request.body.name;
         var formula = request.body.formula;
         var description = request.body.description;
-        let res = await model.addToCollection(dsn, "math", name, formula, description);
+        let res = await model.addToCollection(dsn, "formulas", name, formula, description);
 
         console.log("name", name);
         console.log("formula", formula);

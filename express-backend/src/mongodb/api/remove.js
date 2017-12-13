@@ -13,7 +13,7 @@ router.delete("/", async (request, response) => {
 
     try {
         var id = request.body.id;
-        let res = await model.removeFromCollection(dsn, "math", id);
+        let res = await model.removeFromCollection(dsn, "formulas", id);
 
         console.log("id", id);
         response.json(res);

@@ -35,10 +35,17 @@ export class Remove extends Component {
     }
 
     handleSubmit(event) {
+        event.preventDefault();
+        if (this.state.id === '') {
+            console.log("No formula chosen!");
+            this.setState({output: "Vänligen välj en formel i tabellen först."});
+            this.setState({animate: "animateWarning"});
+            this.resetMessages();
+            return;
+        }
         //this.add(event);
         //this.state.name.push(event.target.value);
         console.log('A formula was submitted: ' + this.state.id);
-        event.preventDefault();
 
         //const myHeaders = new Headers();
 
@@ -64,9 +71,11 @@ export class Remove extends Component {
                 this.setState({animate: "animate"});
                 console.log(data);
                 this.resetMessages();
+                //this.setState({id: ''});
             }).catch(error => {
                 console.log("There was a problem with your fetch operation: ", error.message);
             });
+        //this.setState({id: ''});
     }
 
     componentDidMount() {
@@ -91,6 +100,7 @@ export class Remove extends Component {
                 <p>Här kan du radera objekt ifrån databasen:</p>
                 <form onSubmit={this.handleSubmit}>
                     <select name="id" onChange={this.handleChange}>
+                        <option value="null">Välj formel</option>
                         {
                             this.state.formulas.map((data, i) => {
                                 return <option key={i} value={data._id}>{data.name}</option>;

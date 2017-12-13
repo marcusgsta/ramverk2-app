@@ -16,7 +16,8 @@ router.put("/", async (request, response) => {
         var name = request.body.name;
         var formula = request.body.formula;
         var description = request.body.description;
-        let res = await model.updateItemFromCollection(dsn, "math", id, name, formula, description);
+        let res = await model.updateItemFromCollection(
+            dsn, "formulas", id, name, formula, description);
 
         console.log("id", id);
         console.log("name", name);

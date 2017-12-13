@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.75% </span>
+        <span class="strong">95.35% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>30/32</span>
+        <span class='fraction'>41/43</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.75% </span>
+        <span class="strong">95.35% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>30/32</span>
+        <span class='fraction'>41/43</span>
       </div>
     </div>
   </div>
@@ -106,28 +106,57 @@
 61
 62
 63
-64</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -147,6 +176,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,11 +210,19 @@
 var express = require("express");
 var path = require("path");
 &nbsp;
+var bodyParser = require('body-parser');
+&nbsp;
 // routes
 var index = require(__dirname + '/routes/index');
 var about = require(__dirname + '/routes/about');
 var users = require(__dirname + '/routes/users');
 var chat = require(__dirname + '/routes/chat');
+&nbsp;
+//mongodb
+var read = require(__dirname + '/mongodb/api/read');
+var add = require(__dirname + '/mongodb/api/add');
+var remove = require(__dirname + '/mongodb/api/remove');
+var update = require(__dirname + '/mongodb/api/update');
 &nbsp;
 var app = express();
 &nbsp;
@@ -192,6 +236,9 @@ var staticFiles = path.join(__dirname, "../../react-frontend/build");
 app.use(express.static(staticFiles));
 &nbsp;
 // This is middleware called for all routes
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true})); // support encoded bodies
+&nbsp;
 app.use((req, res, next) =&gt; {
     console.log(req.method);
     console.log(req.path);
@@ -210,6 +257,13 @@ app.use('/', index);
 app.use('/about', about);
 app.use('/users', users);
 app.use('/chat', chat);
+&nbsp;
+// api routes
+app.use('/api/read', read);
+app.use('/api/add/', add);
+app.use('/api/remove', remove);
+app.use('/api/update', update);
+&nbsp;
 // Catch 404 and forward to error handler
 app.use((req, res, next) =&gt; {
     let err = new Error("Not Found");
@@ -238,7 +292,7 @@ module.exports = app;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 28 2017 18:08:29 GMT+0100 (CET)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 13 2017 14:20:00 GMT+0100 (CET)
 </div>
 </div>
 <script src="../prettify.js"></script>

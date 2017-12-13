@@ -69,11 +69,12 @@ class Mongodb {
      * @return {Void}
      */
     async removeFromCollection(dsn, colName, id) {
+        console.log("id", id);
         const ObjectId = require('mongodb').ObjectId;
         const db  = await this.mongo.connect(dsn);
         const col = await db.collection(colName);
-        // const res = await col.deleteOne({ _id: "5a283fd2f80a8906415c8256" });
-        const res = await col.remove({ _id: new ObjectId(id)});
+        //const res = await col.remove({ _id: new ObjectId(id)});
+        const res = await col.deleteOne({ _id: new ObjectId(id)});
 
         await db.close();
 
@@ -104,6 +105,30 @@ class Mongodb {
         await db.close();
 
         return res;
+    }
+
+    /**
+     * Reset a collection by removing existing content and insert a default
+     * set of documents.
+     *
+     * @async
+     *
+     * @param {string} dsn     DSN to connect to database.
+     * @param {string} colName Name of collection.
+     * @param {string} doc     Documents to be inserted into collection.
+     *
+     * @throws Error when database operation fails.
+     *
+     * @return {Promise<void>} Void
+     */
+    async resetCollection(dsn, colName, doc) {
+        const db  = await this.mongo.connect(dsn);
+        const col = await db.collection(colName);
+
+        await col.deleteMany();
+        await col.insertMany(doc);
+
+        await db.close();
     }
 }
 
