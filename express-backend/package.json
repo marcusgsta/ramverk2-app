@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "mocha-test": "node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
     "clean-css-cli": "^4.1.10",
     "codecov": "^3.0.0",
     "coveralls": "^3.0.0",
@@ -35,6 +37,8 @@
     "jscs": "^3.0.7",
     "jsonlint": "^1.6.2",
     "mocha": "^4.0.1",
+    "tape": "^4.8.0",
+    "nock": "^9.1.4",
     "nyc": "^11.3.0",
     "postcss-reporter": "^5.0.0",
     "postcss-scss": "^1.0.2",
@@ -50,6 +54,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "jstransformer-markdown-it": "^2.0.0",

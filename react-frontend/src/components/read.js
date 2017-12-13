@@ -35,7 +35,7 @@ export class Read extends Component {
                 {
                     this.state.formulas.map((data, i) => {
                         return <div className="formula" key={i}>
-                            <h3 className="name">{data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h3> <div className="formel">{data.formula}</div><span className="description"> {data.description}</span></div>;
+                            <h3 className="name">{data.name}</h3> <div className="formel">{data.formula}</div><span className="description"> {data.description}</span></div>;
                     })
                 }
             </div>

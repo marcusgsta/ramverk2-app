@@ -5,6 +5,7 @@ node_modules
 
 # testing
 /coverage
+/express-backend/coverage
 
 # production
 /build

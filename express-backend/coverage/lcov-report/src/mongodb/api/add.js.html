@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.78% </span>
+        <span class="strong">88.89% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/18</span>
+        <span class='fraction'>16/18</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.78% </span>
+        <span class="strong">88.89% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/18</span>
+        <span class='fraction'>16/18</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -76,35 +76,35 @@
 31
 32</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
 //mongodb
 const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/math";
@@ -114,20 +114,20 @@ var router = express.Router();
 &nbsp;
 /* POST mongodb page. */
 &nbsp;
-router.post("/", <span class="fstat-no" title="function not covered" >as</span>ync (request, response) =&gt; {
-    const Model = <span class="cstat-no" title="statement not covered" >require("../model");</span>
-    let model = <span class="cstat-no" title="statement not covered" >new Model();</span>
+router.post("/", async (request, response) =&gt; {
+    const Model = require("../model");
+    let model = new Model();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        var name = <span class="cstat-no" title="statement not covered" >request.body.name;</span>
-        var formula = <span class="cstat-no" title="statement not covered" >request.body.formula;</span>
-        var description = <span class="cstat-no" title="statement not covered" >request.body.description;</span>
-        let res = <span class="cstat-no" title="statement not covered" >await model.addToCollection(dsn, "math", name, formula, description);</span>
+    try {
+        var name = request.body.name;
+        var formula = request.body.formula;
+        var description = request.body.description;
+        let res = await model.addToCollection(dsn, "formulas", name, formula, description);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        console.log("name", name);</span>
-<span class="cstat-no" title="statement not covered" >        console.log("formula", formula);</span>
-<span class="cstat-no" title="statement not covered" >        console.log("description", description);</span>
-<span class="cstat-no" title="statement not covered" >        response.json(res);</span>
+        console.log("name", name);
+        console.log("formula", formula);
+        console.log("description", description);
+        response.json(res);
     } catch (err) {
 <span class="cstat-no" title="statement not covered" >        console.log(err);</span>
 <span class="cstat-no" title="statement not covered" >        response.json(err);</span>
@@ -142,7 +142,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 13 2017 14:20:00 GMT+0100 (CET)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 13 2017 19:11:17 GMT+0100 (CET)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
