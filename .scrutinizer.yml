@@ -3,8 +3,8 @@ checks:
 
 build:
     dependencies:
-        #before:
-            #- cd express-backend && npm install jest
+        before:
+            - cd express-backend && npm install jest
             #npm install istanbul   # or add it as part of your package.json
 
     tests:
