@@ -1,9 +1,9 @@
 checks:
     javascript: true
 
-tools:
-    external_code_coverage:
-        runs: 2
+# tools:
+#     external_code_coverage:
+#         runs: 2
 
 build:
     environment:
@@ -20,16 +20,16 @@ build:
                 #command: 'istanbul cover --report clover test.js'
                 command: 'cd express-backend && npm test'
                 on_node: 1
-                coverage:
-                    file: 'express-backend/coverage/clover.xml'
-                    format: 'clover'
+                # coverage:
+                #     file: 'express-backend/coverage/clover.xml'
+                #     format: 'clover'
 
             -
                 command: 'cd react-frontend && npm test'
                 on_node: 2
-                coverage:
-                    file: 'react-frontend/coverage/clover.xml'
-                    format: 'clover'
+                # coverage:
+                #     file: 'react-frontend/coverage/clover.xml'
+                #     format: 'clover'
 filter:
     excluded_paths:
         - "express-backend/coverage"               # Everything in a root level "tests" directory
