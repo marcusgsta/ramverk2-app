@@ -127,7 +127,7 @@ class Mongodb {
 
         await col.deleteMany();
         await col.insertMany(doc);
-
+        console.log("Database was reset and setup.");
         await db.close();
     }
 }

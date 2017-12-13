@@ -19,8 +19,8 @@ var update = require(__dirname + '/mongodb/api/update');
 
 var app = express();
 
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 // Serve static files
 // var staticFiles = path.join(__dirname, "public");
