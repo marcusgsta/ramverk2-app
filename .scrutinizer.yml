@@ -2,6 +2,9 @@ checks:
     javascript: true
 
 build:
+    environment:
+        node: '9.2.0'
+
     dependencies:
         before:
             - cd express-backend && npm install
