@@ -16,13 +16,16 @@ build:
                 #command: 'istanbul cover --report clover test.js'
                 command: 'cd express-backend && npm test'
                 on_node: 1
+                coverage:
+                    file: 'coverage/clover-backend.xml'
+                    format: 'clover'
 
             -
                 command: 'cd react-frontend && npm test'
                 on_node: 2
-                #coverage:
-                    #file: 'coverage/clover.xml'
-                    #format: 'clover'
+                coverage:
+                    file: 'coverage/clover-frontend.xml'
+                    format: 'clover'
 filter:
     excluded_paths:
         - "express-backend/coverage"               # Everything in a root level "tests" directory
