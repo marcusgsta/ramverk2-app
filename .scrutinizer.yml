@@ -4,7 +4,8 @@ checks:
 build:
     dependencies:
         #before:
-            #- npm install istanbul   # or add it as part of your package.json
+            #- cd express-backend && npm install jest
+            #npm install istanbul   # or add it as part of your package.json
 
     tests:
         override:
