@@ -3,11 +3,19 @@
 var express = require("express");
 var path = require("path");
 
+var bodyParser = require('body-parser');
+
 // routes
 var index = require(__dirname + '/routes/index');
 var about = require(__dirname + '/routes/about');
 var users = require(__dirname + '/routes/users');
 var chat = require(__dirname + '/routes/chat');
+
+//mongodb
+var read = require(__dirname + '/mongodb/api/read');
+var add = require(__dirname + '/mongodb/api/add');
+var remove = require(__dirname + '/mongodb/api/remove');
+var update = require(__dirname + '/mongodb/api/update');
 
 var app = express();
 
@@ -21,6 +29,9 @@ var staticFiles = path.join(__dirname, "../../react-frontend/build");
 app.use(express.static(staticFiles));
 
 // This is middleware called for all routes
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true})); // support encoded bodies
+
 app.use((req, res, next) => {
     console.log(req.method);
     console.log(req.path);
@@ -39,6 +50,13 @@ app.use('/', index);
 app.use('/about', about);
 app.use('/users', users);
 app.use('/chat', chat);
+
+// api routes
+app.use('/api/read', read);
+app.use('/api/add/', add);
+app.use('/api/remove', remove);
+app.use('/api/update', update);
+
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
     let err = new Error("Not Found");

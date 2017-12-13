@@ -3,10 +3,12 @@
 @import 'patternlab/scss/01-tools/_mixins.scss';
 @import 'patternlab/scss/04-components/_button.scss';
 @import 'patternlab/scss/04-components/navigation/_primary-nav.scss';
+@import 'dropdownmenu.scss';
 
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
 $background-color: #fff;
+$hover-color: $color-blue-grey-2;
 
 // mixins
 
@@ -21,11 +23,18 @@ $background-color: #fff;
 // Nav
 
 .site-header {
-    overflow: auto;
+    //overflow: auto;
+    height:100px;
     }
 
 #icon {
     float:left;
+}
+
+@media screen and (max-width: 760px) {
+    #icon {
+        display: none;
+    }
 }
 
 .primary-nav {
@@ -48,6 +57,14 @@ $background-color: #fff;
     color: blue;
 }
 
+@include navmenu(1, 100%);
+
+
+@media screen and (max-width: 760px) {
+    .centeredmenu ul li {
+       clear:both;
+   }
+}
 // navbar {
 //     position:relative;
 // }
@@ -123,6 +140,98 @@ hr {
 
 #portrait { @include border-radius(5px); }
 
+/* mongodb */
+.formula {
+    padding: 8px 0 0;
+    .name {
+        font-weight: 700;
+    }
+    .formel {
+        background-color: #fff;
+        margin: 0 0 8px;
+        padding: 8px;
+        border:1px solid gray;
+        display:inline-block;
+    }
+    .description {
+        margin: 0 0 0 8px;
+        font-style: italic;
+    }
+}
+
+form {
+    // margin: 0 auto;
+    // width:70%;
+    // display:block;
+
+    input {
+        font-size:16px;
+        padding:4px;
+        //margin: 8px 0 4px;
+        //margin: 8px 0 auto;
+        margin: 0 auto;
+        display:block;
+        width:70%;
+        }
+    select {
+        font-size:16px;
+        padding: 8px;
+        //margin: 0 0 8px;
+        height:40px;
+        margin: 0 auto;
+        display:block;
+        width:70%;
+    }
+    input[type="submit"] {
+        margin-bottom: 16px;
+    }
+    .add {
+        margin: 0 0 0 8px;
+    }
+}
+
+.db_form {
+    // margin: 0 auto;
+    // width:70%;
+    // display:block;
+}
+
+.output {
+    height:40px;
+    padding:12px;
+    font-size:20px;
+    text-align:center;
+    line-height: 100%;
+}
+
+.animate {
+    opacity: 0;
+    animation: KEYFRAME-NAME 4s;
+    //-webkit-transition: opacity 2s;
+    //transition: opacity 2s;
+    background-color: #4CAF50;
+    color: #000;
+    @include border-radius(10px);
+
+}
+
+.animateWarning {
+    opacity: 0;
+    animation: KEYFRAME-NAME 4s;
+    //-webkit-transition: opacity 2s;
+    //transition: opacity 2s;
+    background-color: darkred;
+    color: #fff;
+    @include border-radius(10px);
+}
+
+
+@keyframes KEYFRAME-NAME {
+    0% { opacity: 0;}
+    25% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
 // About
 
 img#express {
@@ -188,6 +297,7 @@ input.form-control {
     height: 100px;
     padding:8px;
     margin: 20px 0;
+    text-align: center;
 }
 
 // general
