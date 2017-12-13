@@ -17,14 +17,14 @@ build:
                 command: 'cd express-backend && npm test'
                 on_node: 1
                 coverage:
-                    file: 'coverage/clover-backend.xml'
+                    file: 'express-backend/coverage/clover.xml'
                     format: 'clover'
 
             -
                 command: 'cd react-frontend && npm test'
                 on_node: 2
                 coverage:
-                    file: 'coverage/clover-frontend.xml'
+                    file: 'react-frontend/coverage/clover.xml'
                     format: 'clover'
 filter:
     excluded_paths:
