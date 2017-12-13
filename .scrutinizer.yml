@@ -4,7 +4,7 @@ checks:
 build:
     dependencies:
         before:
-            - cd express-backend && npm install jest
+            - cd express-backend && npm install
             #npm install istanbul   # or add it as part of your package.json
 
     tests:
