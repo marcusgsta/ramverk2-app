@@ -14,7 +14,7 @@ build:
         override:
             -
                 #command: 'istanbul cover --report clover test.js'
-                command: 'cd express-backend && jest --coverage'
+                command: 'cd express-backend && npm install && jest --coverage'
                 on_node: 1
                 # coverage:
                 #     file: 'express-backend/coverage/clover.xml'
