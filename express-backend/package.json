@@ -1,0 +1,15 @@
+{
+  "name": "express-backend",
+  "version": "1.0.0",
+  "description": "backend with express",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "author": "Marcus Gustafsson",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "supertest": "^3.0.0"
+  }
+}
