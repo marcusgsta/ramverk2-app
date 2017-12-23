@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/20</span>
+        <span class='fraction'>18/20</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/20</span>
+        <span class='fraction'>18/20</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -77,8 +77,16 @@
 32
 33
 34
-35</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+35
+36
+37
+38
+39
+40
+41</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -87,8 +95,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -98,14 +106,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,7 +125,9 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
 //mongodb
-const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/math";
+// const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/math";
+let Api = require('@marcusgsta/mongodb-api');
+let api = new Api(process.env.DBWEBB_DSN || "mongodb://localhost:27017/math");
 &nbsp;
 var express = require('express');
 var router = express.Router();
@@ -121,25 +135,29 @@ var router = express.Router();
 /* POST mongodb page. */
 &nbsp;
 router.put("/", async (request, response) =&gt; {
-    let Model = require("../model");
-    const model = new Model();
+    // let Model = require("../model");
+    // const model = new Model();
 &nbsp;
     try {
         var id = request.body.id;
         var name = request.body.name;
         var formula = request.body.formula;
         var description = request.body.description;
-        let res = await model.updateItemFromCollection(
-            dsn, "formulas", id, name, formula, description);
+        let resObject = {
+            "name": name,
+            "formula": formula,
+            "description": description
+        };
+        let res = await api.updateItemFromCollection("formulas", id, resObject);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        console.log("id", id);</span>
-<span class="cstat-no" title="statement not covered" >        console.log("name", name);</span>
-<span class="cstat-no" title="statement not covered" >        console.log("formula", formula);</span>
-<span class="cstat-no" title="statement not covered" >        console.log("description", description);</span>
-<span class="cstat-no" title="statement not covered" >        response.json(res);</span>
+        console.log("id", id);
+        console.log("name", name);
+        console.log("formula", formula);
+        console.log("description", description);
+        response.json(res);
     } catch (err) {
-        console.log(err);
-        response.json(err);
+<span class="cstat-no" title="statement not covered" >        console.log(err);</span>
+<span class="cstat-no" title="statement not covered" >        response.json(err);</span>
     }
 });
 &nbsp;
@@ -151,7 +169,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 14 2017 12:51:04 GMT+0100 (CET)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Dec 23 2017 10:47:53 GMT+0100 (CET)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

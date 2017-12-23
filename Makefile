@@ -215,7 +215,7 @@ check-tools-js:
 .PHONY: htmlhint
 htmlhint:
 	@$(call HELPTEXT,$@)
-	[ ! -f .htmlhintrc ] || $(HTMLHINT) --ignore build/**,node_modules/** | grep -v "Config loaded:"
+	[ ! -f .htmlhintrc ] || $(HTMLHINT) --ignore build/**,node_modules/**,**/**/coverage/** | grep -v "Config loaded:"
 
 
 

@@ -3,6 +3,7 @@
 class Mongodb {
     constructor() {
         this.mongo = require("mongodb").MongoClient;
+        this.dsn = process.env.DBWEBB_DSN || "mongodb://localhost:27017/math";
     }
 
     /**
@@ -121,6 +122,7 @@ class Mongodb {
      *
      * @return {Promise<void>} Void
      */
+    // async resetCollection(dsn, colName, doc) {
     async resetCollection(dsn, colName, doc) {
         const db  = await this.mongo.connect(dsn);
         const col = await db.collection(colName);
