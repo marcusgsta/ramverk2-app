@@ -1,21 +1,9 @@
 language: node_js
-
 node_js:
-    - "8"
-
-sudo: false
-
-git:
-    submodules: false
-
+  - 9.2.0
 cache:
-    directories:
-        - node_modules
-
-#before_script:
-    # Prepare for automated tests
-    #- npm install
-
+  directories:
+    - node_modules
 script:
-    # Run tests
-    - npm test
+  - npm run build
+  - npm test
