@@ -2,9 +2,8 @@ checks:
     javascript: true
 
 build:
-    dependencies:
-        #before:
-            #- npm install istanbul   # or add it as part of your package.json
+    environment:
+        node: '9.2.0'
 
     tests:
         override:
@@ -12,5 +11,5 @@ build:
                 #command: 'istanbul cover --report clover test.js'
                 command: 'npm test'
                 coverage:
-                    file: 'react-frontend/coverage/clover.xml'
+                    file: 'coverage/clover.xml'
                     format: 'clover'
