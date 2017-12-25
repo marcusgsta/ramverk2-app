@@ -24,7 +24,7 @@ app.set('view engine', 'pug');
 
 // Serve static files
 // var staticFiles = path.join(__dirname, "public");
-var staticFiles = path.join(__dirname, "../../react-frontend/build");
+var staticFiles = path.join(__dirname, "../client/build");
 
 app.use(express.static(staticFiles));
 

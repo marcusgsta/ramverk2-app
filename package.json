@@ -2,35 +2,30 @@
   "name": "ramverk2",
   "version": "3.0.4",
   "description": "App with express and react",
-  "main": "express-backend/index.js",
+  "main": "src/server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcusgsta/ramverk2-app.git"
+  },
   "scripts": {
-    "start": "node express-backend/src/server.js",
-    "start-client": "cd react-frontend && npm start",
-    "start-backend": "node express-backend/src/server.js",
-    "start-dev": "concurrently --kill-others \"npm run start-client\" \"npm run start-backend\"",
-    "oldinstall": "cd react-frontend && npm install --only=dev && npm run build",
-    "install": "cd react-frontend && npm install && npm run build",
+    "start": "node src/server.js",
+    "start-client": "cd client && npm start",
+    "start-backend": "node /src/server.js",
+    "start-dev": "concurrently --kill-others 'npm run start-client' 'npm run start-backend'",
+    "docker-start": "docker-compose up -d mongodb",
+    "oldinstall": "cd client && npm install --only=dev && npm run build",
+    "postinstall": "cd client && npm install && npm run build",
     "pretest": "make test",
-    "test": "cd react-frontend && npm test -- --coverage",
-    "old-posttest": "cd express-backend && jest --coverage",
+    "test": "cd client && npm test -- --coverage",
+    "posttest": "cd src && jest --coverage",
     "test1": "docker-compose run node7 && npm test",
     "test2": "docker-compose run node8 && npm test",
     "test3": "docker-compose run node9 && npm test",
-    "heroku-postbuild": "cd react-frontend && npm install --only=dev && npm install && npm run build",
-    "reset-database": "node express-backend/src/mongodb/setup.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marcusgsta/ramverk2.git"
+    "reset-database": "node src/mongodb/setup.js"
   },
   "author": "Marcus Gustafsson",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/marcusgsta/ramverk2/issues"
-  },
-  "homepage": "https://github.com/marcusgsta/ramverk2#readme",
   "devDependencies": {
-    "ajv": "5.0.3-beta.0",
     "babel-eslint": "^8.0.3",
     "clean-css-cli": "^4.1.10",
     "codecov": "^3.0.0",
@@ -40,7 +35,6 @@
     "eslint-config-postcss": "^2.0.2",
     "eslint-plugin-pug": "^1.1.0",
     "eslint-plugin-react": "^7.5.1",
-    "gulp-postcss": "^7.0.0",
     "html-minifier": "^3.5.7",
     "htmlhint": "^0.9.13",
     "jest": "^21.2.1",
@@ -58,6 +52,7 @@
   },
   "dependencies": {
     "@marcusgsta/mongodb-api": "^1.0.8",
+    "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
     "jstransformer-markdown-it": "^2.0.0",
