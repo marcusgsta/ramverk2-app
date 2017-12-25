@@ -14,7 +14,7 @@
     "start-dev": "concurrently --kill-others 'npm run start-client' 'npm run start-backend'",
     "docker-start": "docker-compose up -d mongodb",
     "oldinstall": "cd client && npm install --only=dev && npm run build",
-    "postinstall": "cd client && npm install && npm run build",
+    "oldinstall2": "cd client && npm install && npm run build",
     "pretest": "make test",
     "test": "cd client && npm test -- --coverage",
     "posttest": "cd src && jest --coverage",
