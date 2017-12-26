@@ -2,8 +2,8 @@
 //mongodb
 // const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/math";
 let Api = require('@marcusgsta/mongodb-api');
-let api = new Api(process.env.DBWEBB_DSN || "mongodb://localhost:27017/math");
-
+let api = new Api(process.env.DBWEBB_DSN || "mongodb://localhost:27017/app");
+let bcrypt = require('bcrypt');
 
 var express = require('express');
 var router = express.Router();
@@ -11,25 +11,26 @@ var router = express.Router();
 /* POST mongodb page. */
 
 router.post("/", async (request, response) => {
-    // const Model = require("../model");
-    // let model = new Model();
-
     try {
-        var name = request.body.name;
-        var formula = request.body.formula;
-        var description = request.body.description;
+        let name = request.body.name;
+        let nick = request.body.nick;
+        let gravatar = request.body.gravatar;
+        let password = request.body.password;
+        let hashPassword = bcrypt.hashSync(password, 10);
 
         let resObject = {
             "name": name,
-            "formula": formula,
-            "description": description
+            "nick": nick,
+            "gravatar": gravatar,
+            "password": hashPassword
         };
-        let colName = "formulas";
+        let colName = "users";
         let res = await api.addToCollection(colName, resObject);
 
         console.log("name", name);
-        console.log("formula", formula);
-        console.log("description", description);
+        console.log("nick", nick);
+        console.log("gravatar", gravatar);
+        console.log("password", password);
         response.json(res);
     } catch (err) {
         console.log(err);

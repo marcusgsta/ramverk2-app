@@ -1,9 +1,39 @@
 #!/usr/bin/env node
 "use strict";
-var express = require("express");
-var path = require("path");
+let _ = require("lodash");
+let express = require("express");
+let path = require("path");
+let bodyParser = require('body-parser');
+// let jwt = require("jsonwebtoken");
 
-var bodyParser = require('body-parser');
+let passport = require("passport");
+let passportJWT = require("passport-jwt");
+
+let ExtractJwt = passportJWT.ExtractJwt;
+let JwtStrategy = passportJWT.Strategy;
+let Api = require('@marcusgsta/mongodb-api');
+let api = new Api(process.env.DBWEBB_DSN || "mongodb://localhost:27017/app");
+let colName = "users";
+
+let jwtOptions = {};
+
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
+jwtOptions.secretOrKey = 'tasmanianDevil';
+
+let strategy = new JwtStrategy(jwtOptions, function(jwtPayload, next) {
+    console.log('payload received', jwtPayload);
+    // get authenticated user from database:
+    let criteria = {'_id': jwtPayload.id};
+    let user = api.findInCollection(colName, criteria, {}, 0);
+
+    if (user) {
+        next(null, user);
+    } else {
+        next(null, false);
+    }
+});
+
+passport.use(strategy);
 
 // routes
 var index = require(__dirname + '/routes/index');
@@ -11,12 +41,16 @@ var about = require(__dirname + '/routes/about');
 var users = require(__dirname + '/routes/users');
 var chat = require(__dirname + '/routes/chat');
 
-//mongodb
+// mongodb
 var read = require(__dirname + '/mongodb/api/read');
 var add = require(__dirname + '/mongodb/api/add');
 var remove = require(__dirname + '/mongodb/api/remove');
 var update = require(__dirname + '/mongodb/api/update');
 
+// login
+let login = require(__dirname + '/mongodb/api/login');
+let secret = require(__dirname + '/mongodb/api/secret');
+let secretDebug = require(__dirname + '/mongodb/api/secretDebug');
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +60,7 @@ app.set('view engine', 'pug');
 // var staticFiles = path.join(__dirname, "public");
 var staticFiles = path.join(__dirname, "../client/build");
 
+app.use(passport.initialize());
 app.use(express.static(staticFiles));
 
 // This is middleware called for all routes
@@ -56,6 +91,11 @@ app.use('/api/read', read);
 app.use('/api/add/', add);
 app.use('/api/remove', remove);
 app.use('/api/update', update);
+app.use('/api/login', login);
+app.use('/api/secret', secret);
+app.use('/api/secretdebug', secretDebug);
+
+
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {

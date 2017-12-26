@@ -1,5 +1,42 @@
 version: "3"
 services:
+  node_7_test:
+    image: "node:7"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - DBWEBB_PORT=3000
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "1338:3000"
+    command: "npm test"
+  node_8_test:
+    image: "node:8"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - DBWEBB_PORT=3000
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "1337:3000"
+    command: "npm test"
+  node_9_test:
+    image: "node:9"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - DBWEBB_PORT=3000
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "1339:3000"
+    command: "npm test"
+
   node7:
     image: "node:7"
     user: "node"

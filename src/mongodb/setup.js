@@ -4,7 +4,7 @@
 "use strict";
 // const Model = require("./model");
 let Api = require('@marcusgsta/mongodb-api');
-let api = new Api(process.env.DBWEBB_DSN || "mongodb://localhost:27017/math");
+let api = new Api(process.env.DBWEBB_DSN || "mongodb://localhost:27017/app");
 
 // const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/math";
 
@@ -16,7 +16,7 @@ const docs = JSON.parse(fs.readFileSync(
 ));
 
 // let model = new Model();
-let colName = "formulas";
+let colName = "users";
 
 // Do it.
 api.resetCollection(colName, docs)
