@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 "use strict";
-let _ = require("lodash");
+// let _ = require("lodash");
 let express = require("express");
 let path = require("path");
 let bodyParser = require('body-parser');
