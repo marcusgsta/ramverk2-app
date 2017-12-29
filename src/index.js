@@ -8,10 +8,10 @@ let bodyParser = require('body-parser');
 // let jwt = require("jsonwebtoken");
 let config;
 
-if (process.env.travis === true) {
-    config = require('../config-travis.js');
-} else {
+if (process.env.NODE_ENV === 'development') {
     config = require('../config.js');
+} else {
+    config = require('../config-travis.js');
 }
 
 let passport = require("passport");
