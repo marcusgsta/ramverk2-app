@@ -4,7 +4,7 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
 # Ramverk2-app – with react-frontend and express-backend
 
-# INSTALLING
+# Install
 
 Clone this repo with
 
@@ -52,7 +52,7 @@ After exiting you might want to remove the Docker container:
 npm run stop-docker
 ```
 
-# TESTING
+# Test
 
 Test repos with
 ```
@@ -123,7 +123,7 @@ Scrutinizer är en kodgranskare används för men inkluderar också kodanalys oc
 I Scrutinizer kan man se minor och major issues, bugs och antal procent kodtäckning. Det gör det lätt att upptäcka brister och förbättra sina projekts kodkvalitet.
 
 
-# Realtime application
+# Realtidsapplikation
 
 Realtidsapplikationen är en chatt. Teknikerna jag har använt är modulen socket.io. Denna erbjuder en klient och en server, vilka man sedan jobbar emot och kopplar upp sig med hjälp av.
 
@@ -135,9 +135,9 @@ Dokumentdatabasen Mongodb är en noSQL-dokument-databas som fungerar i JSON och 
 
 
 
-# Module at npm
+# NPM-modul
 
-Modulen mongodb-api är ett litet api med standard Create-Read-Update-Delete-funktioner. Man laddar ner det från npm, och skapar ett objekt.
+Modulen mongodb-api är ett litet api med standard CRUD-funktioner, det vill säga Create, Read, Update och Delete, riktat mot en Mongodb-databas. Man laddar ner det från npm, och skapar ett objekt.
 
 Länk:
 
