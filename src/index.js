@@ -4,8 +4,16 @@
 let express = require("express");
 let path = require("path");
 let bodyParser = require('body-parser');
+
 // let jwt = require("jsonwebtoken");
-let config = require('../config.js');
+let config;
+
+if (process.env.CI === true) {
+    config = require('../config-travis.js');
+} else {
+    config = require('../config.js');
+}
+
 let passport = require("passport");
 let passportJWT = require("passport-jwt");
 
