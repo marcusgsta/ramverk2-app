@@ -75,21 +75,3 @@ describe('Test the api/remove path', () => {
 //         .expect('Location','/')
 //         .end(done)
 //       })
-//
-// describe('Test the api/secret path', () => {
-//     test('It should respond with the GET method', (done) => {
-//         request(app).get('/api/secret').then((response) => {
-//             expect(response.statusCode).toBe(200);
-//             done();
-//         });
-//     });
-// });
-//
-// describe('Test the api/secretdebug path', () => {
-//     test('It should respond with the GET method', (done) => {
-//         request(app).get('/api/secretdebug').then((response) => {
-//             expect(response.statusCode).toBe(200);
-//             done();
-//         });
-//     });
-// });

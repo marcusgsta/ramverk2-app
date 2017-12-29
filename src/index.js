@@ -44,7 +44,7 @@ passport.use(strategy);
 // routes
 var index = require(__dirname + '/routes/index');
 var about = require(__dirname + '/routes/about');
-var chat = require(__dirname + '/routes/chat');
+// var chat = require(__dirname + '/routes/chat');
 
 // mongodb
 var read = require(__dirname + '/mongodb/api/read');
@@ -87,7 +87,7 @@ app.get("/", (req, res, next) => {
 
 app.use('/', index);
 app.use('/about', about);
-app.use('/chat', chat);
+// app.use('/chat', chat);
 
 // api routes
 app.use('/api/read', read);
