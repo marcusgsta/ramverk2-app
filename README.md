@@ -74,16 +74,77 @@ npm run test-docker2 # for node 9
 ```
 This will take some time. When the unit tests are done you will need to press 'Q' to leave the Jest CLI and proceed with code coverage as a last step.
 
+
+The following text is in Swedish.
+
 # TOOLS USED for testing
 
-Jest, supertest
+Jest
+Jag har använt Jest, vilket är inkluderat i create-react-app.
+
+Supertest
+För X har jag använt Supertest.
+
+
+
 
 # CI
 
-Travis, Scrutinizer
+De båda repona är integrerade med Continuous Integration. För varje uppladdning på Github så byggs och testas repona i Travis och Scrutinizer.
+I filen .env.development definieras NODE_ENV=development. Detta utnyttjar jag för att veta vilken config.js jag använder mig av, något som är aktuellt för JWT och autentificering. På så vis behöver jag inte göra den skyddade config-filen offentlig.
+
+För produktion skulle config-filen dock behöva krypteras.
+
+## Travis CI
+För build har jag använt Travis. Travis är en Continuous Integration Service, som installerar och bygger projektet och meddelar om något är fel.
+
+Travis högkvarter ligger i Berlin, men de har utvecklare över hela världen. Open Source-projekt kan testas gratis, och privata repon mot en avgift.
+
+Travis erbjuder en badge vilken visar om repot har byggts utan fel.
+
+## Scrutinizer
+Scrutinizer bygger repot men inkluderar också kodanalys och -täckning. Man får badges vilka på ett tydligt sätt kommunicerar kodens kvalitet.
+
+
 
 # Realtime application
 
+Realtidsapplikationen är en chatt. Teknikerna jag har använt är modulen socket.io. Denna erbjuder en klient och en server, vilka man sedan jobbar emot och kopplar upp sig med hjälp av.
+
 # Database
 
+Databasen Mongodb är en noSQL-dokument-databas som fungerar i JSON och Javascript.
+
 # Module at npm
+
+Modulen mongodb-api är ett litet api med standard Create-Read-Update-Delete-funktioner. Man laddar ner det från npm, och skapar ett objekt.
+
+Länk:
+
+# Kravbild
+
+Projektet innebär en chatt
+med server och klient.
+Det ska gå att skapa en egen användare och att logga in.
+Man kan även redigera sin egen profil.
+
+# Bastekniker och ramverk
+Jag använder mig av Express.js för servern och React.js för klienten.
+
+För autentificering används Passport och JWT – JSON Web Token.
+
+Express erbjuder ett smidigt sätt för att snabbt skapa en server att utgå ifrån.
+
+React kräver lite mer att sätta sig in i, men fungerar bra och snabbt när man kommit in i det. Något som kan göra det lite mer komplicerat är att man behöver hålla reda på olika versioner, och hålla sig till en.
+
+React Router behövs för att kunna länka dit man vill.
+
+# Utvärdering:
+Express är jag väldigt nöjd med.
+React kan jag ställa mig mer tvivlande till. Det är
+
+En tanke är att världen för ramverk i Javascript är snabbt föränderlig, och blir därför lätt förvirrande. Det är lätt att förirra sig i olika versioner. Något annat är att det existerar mängder av moduler, på gott och på ont. Jag tror att folk använder mer moduler än vad de behöver, och då är det lätt att mista översikten över vad man håller på med. Om en kodbas använder tjugo olika moduler, så blir det ett slags hopplock, och är det då egentligen programmering man håller på med? Vad händer med säkerheten när man inte känner koden man använder?
+
+Det kan kännas som om mycket av det man lägger tid på är att ha koll på sina moduler och deras versioner, och att de fungerar tillsammans med andra moduler. Detta finns ju normalt som dependencies i modulens package.json-fil.
+
+ES6
