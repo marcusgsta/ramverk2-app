@@ -1,14 +1,34 @@
 const request = require('supertest');
 const app = require('../index');
 
+
+// describe('Test the root path', () => {
+//     test('It should respond with the GET method', (done) => {
+//         request(app).get('/').then((response) => {
+//             expect(response.statusCode).toBe(200);
+//             done();
+//         });
+//     });
+// });
+
 describe('Test the about path', () => {
-    test('It should response the GET method', (done) => {
+    test('It should respond with the GET method', (done) => {
         request(app).get('/about').then((response) => {
             expect(response.statusCode).toBe(200);
             done();
         });
     });
 });
+
+// describe('Test the api/login path', () => {
+//     test('It should respond with the POST method', (done) => {
+//         request(app).get('/api/login').then((response) => {
+//             expect(response.statusCode).toBe(200);
+//             done();
+//         });
+//     });
+// });
+
 
 describe('Test the error path', () => {
     test('It should response the GET method', (done) => {
@@ -19,18 +39,10 @@ describe('Test the error path', () => {
     });
 });
 
-
-// describe('Test the /chat path', () => {
-//     test('It should respond with the GET method', (done) => {
-//         request(app).get('/chat').then((response) => {
-//             expect(response.statusCode).toBe(200);
-//             done();
-//         });
-//     });
-// });
+// CRUD routes
 
 describe('Test the api/read path', () => {
-    test('It should response the GET method', (done) => {
+    test('It should respond with the GET method', (done) => {
         request(app).get('/api/read').then((response) => {
             expect(response.statusCode).toBe(200);
             done();
@@ -38,14 +50,7 @@ describe('Test the api/read path', () => {
     });
 });
 
-describe('Test the api/add path', () => {
-    test('It should response the POST method', (done) => {
-        request(app).post('/api/add').then((response) => {
-            expect(response.statusCode).toBe(200);
-            done();
-        });
-    });
-});
+
 
 describe('Test the api/update path', () => {
     test('It should response the PUT method', (done) => {
@@ -65,14 +70,17 @@ describe('Test the api/remove path', () => {
     });
 });
 
-// describe('Test the api/login path', () => {
-//     test('It should respond with the POST method', (done) => {
-//         request(app).get('/api/login').then((response) => {
-//             expect(response.statusCode).toBe(200);
-//             done();
-//         });
-//     });
-// });
+
+
+// describe('Login test', function () {
+//       it('should redirect to /', function (done) {
+//         agent
+//         .post('/login')
+//         .field('email', 'user@user.com')
+//         .field('password', 'pass11')
+//         .expect('Location','/')
+//         .end(done)
+//       })
 //
 // describe('Test the api/secret path', () => {
 //     test('It should respond with the GET method', (done) => {

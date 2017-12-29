@@ -44,7 +44,6 @@ passport.use(strategy);
 // routes
 var index = require(__dirname + '/routes/index');
 var about = require(__dirname + '/routes/about');
-var users = require(__dirname + '/routes/users');
 var chat = require(__dirname + '/routes/chat');
 
 // mongodb
@@ -88,7 +87,6 @@ app.get("/", (req, res, next) => {
 
 app.use('/', index);
 app.use('/about', about);
-app.use('/users', users);
 app.use('/chat', chat);
 
 // api routes
@@ -97,9 +95,6 @@ app.use('/api/add/', add);
 app.use('/api/remove', remove);
 app.use('/api/update', update);
 app.use('/api/login', login);
-// app.use('/api/secret', secret);
-
-
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -108,7 +103,6 @@ app.use((req, res, next) => {
     err.status = 404;
     next(err);
 });
-
 
 
 app.use((err, req, res, next) => {

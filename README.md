@@ -77,13 +77,19 @@ This will take some time. When the unit tests are done you will need to press 'Q
 
 The following text is in Swedish.
 
-# TOOLS USED for testing
+# Verktyg använda för enhetstester
 
-Jest
-Jag har använt Jest, vilket är inkluderat i create-react-app.
+## Jest
+Klienten är scaffoldad fram med hjälp av modulen create-react-app, vilken skapar en utgångspunkt för en React-app.
 
-Supertest
-För X har jag använt Supertest.
+Jest är på förhand inkluderat i create-react-app.
+
+Jest är ett allround testverktyg men även bra för den specifika uppgiften att testa komponenter skrivna i React.js. Jest har inbyggda mockfunktioner, så att man kan sända mock-callbacks för att testa delar av en funktion.
+
+Jag använder Jest både för klienten och för backend.
+
+## Supertest
+Supertest tar hand om HTTP assertions. Med hjälp av denna testrunner kan jag testa att routerna i backend fungerar som de ska.
 
 
 
@@ -102,10 +108,12 @@ Travis högkvarter ligger i Berlin, men de har utvecklare över hela världen. O
 
 Travis erbjuder en badge vilken visar om repot har byggts utan fel. Om något är fel så blir badgen röd, det finns inget antingen eller för Travis. Eftersom man vill ha en grön badge så blir det viktigt att fixa varje fel.
 
+I sin config-filen .travis.yml har jag bestämt att projektet ska byggas i Node 8 och 9, de två senaste versionerna.
+
 ## Scrutinizer CI
 Scrutinizer är en kodgranskare används för men inkluderar också kodanalys och -täckning. Man får badges vilka på ett tydligt sätt kommunicerar kodens kvalitet i en rating där 10 är det högsta betyget.
 
-I Scrutinizer kan man se minor och major issues, bugs
+I Scrutinizer kan man se minor och major issues, bugs och antal procent kodtäckning. Det gör det lätt att upptäcka brister och förbättra sina projekts kodkvalitet.
 
 
 # Realtime application
