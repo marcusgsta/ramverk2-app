@@ -18,9 +18,15 @@ Start Docker container to run Mongodb database, and run in detached mode:
 npm run start-docker
 ```
 
+Install:
+```
+npm install
+cd client && npm install && npm run build
+```
+
 Start with
 ```
-npm install && npm start
+npm npm start
 ```
 
 Optional: Set port (default: 1337)

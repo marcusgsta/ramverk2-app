@@ -20,14 +20,14 @@ describe('Test the error path', () => {
 });
 
 
-describe('Test the /chat path', () => {
-    test('It should respond with the GET method', (done) => {
-        request(app).get('/chat').then((response) => {
-            expect(response.statusCode).toBe(200);
-            done();
-        });
-    });
-});
+// describe('Test the /chat path', () => {
+//     test('It should respond with the GET method', (done) => {
+//         request(app).get('/chat').then((response) => {
+//             expect(response.statusCode).toBe(200);
+//             done();
+//         });
+//     });
+// });
 
 describe('Test the api/read path', () => {
     test('It should response the GET method', (done) => {
@@ -65,29 +65,29 @@ describe('Test the api/remove path', () => {
     });
 });
 
-describe('Test the api/login path', () => {
-    test('It should respond with the POST method', (done) => {
-        request(app).get('/api/login').then((response) => {
-            expect(response.statusCode).toBe(200);
-            done();
-        });
-    });
-});
-
-describe('Test the api/secret path', () => {
-    test('It should respond with the GET method', (done) => {
-        request(app).get('/api/secret').then((response) => {
-            expect(response.statusCode).toBe(200);
-            done();
-        });
-    });
-});
-
-describe('Test the api/secretdebug path', () => {
-    test('It should respond with the GET method', (done) => {
-        request(app).get('/api/secretdebug').then((response) => {
-            expect(response.statusCode).toBe(200);
-            done();
-        });
-    });
-});
+// describe('Test the api/login path', () => {
+//     test('It should respond with the POST method', (done) => {
+//         request(app).get('/api/login').then((response) => {
+//             expect(response.statusCode).toBe(200);
+//             done();
+//         });
+//     });
+// });
+//
+// describe('Test the api/secret path', () => {
+//     test('It should respond with the GET method', (done) => {
+//         request(app).get('/api/secret').then((response) => {
+//             expect(response.statusCode).toBe(200);
+//             done();
+//         });
+//     });
+// });
+//
+// describe('Test the api/secretdebug path', () => {
+//     test('It should respond with the GET method', (done) => {
+//         request(app).get('/api/secretdebug').then((response) => {
+//             expect(response.statusCode).toBe(200);
+//             done();
+//         });
+//     });
+// });

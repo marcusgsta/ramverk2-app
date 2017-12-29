@@ -13,6 +13,7 @@
     "url": "https://github.com/marcusgsta/ramverk2-app.git"
   },
   "scripts": {
+    "build": "cd client && run build",
     "start": "node src/server.js",
     "start-client": "cd client && npm start",
     "start-backend": "node src/server.js",

@@ -5,7 +5,7 @@ let express = require("express");
 let path = require("path");
 let bodyParser = require('body-parser');
 // let jwt = require("jsonwebtoken");
-
+let config = require('../config.js');
 let passport = require("passport");
 let passportJWT = require("passport-jwt");
 
@@ -18,7 +18,8 @@ let colName = "users";
 let jwtOptions = {};
 
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
-jwtOptions.secretOrKey = 'tasmanianDevil';
+// jwtOptions.secretOrKey = 'tasmanianDevil';
+jwtOptions.secretOrKey = config.jwtSecret;
 
 let strategy = new JwtStrategy(jwtOptions, function(jwtPayload, next) {
     console.log('payload received', jwtPayload);
