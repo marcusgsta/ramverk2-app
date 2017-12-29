@@ -8,7 +8,7 @@ let bodyParser = require('body-parser');
 // let jwt = require("jsonwebtoken");
 let config;
 
-if (process.env.CI === true) {
+if (process.env.travis === true) {
     config = require('../config-travis.js');
 } else {
     config = require('../config.js');

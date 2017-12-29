@@ -19,3 +19,6 @@ cache:
 script:
     # Run tests
     - npm test
+
+env:
+  - travis=true
