@@ -2,40 +2,27 @@ const request = require('supertest');
 const app = require('../index');
 
 
-// describe('Test the root path', () => {
-//     test('It should respond with the GET method', (done) => {
-//         request(app).get('/').then((response) => {
-//             expect(response.statusCode).toBe(200);
-//             done();
-//         });
-//     });
-// });
-
-describe('Test the about path', () => {
-    test('It should respond with the GET method', (done) => {
-        request(app).get('/about').then((response) => {
-            expect(response.statusCode).toBe(200);
-            done();
-        });
+describe('Test the root path', () => {
+    test('It should response the GET method', () => {
+        return request(app).get('/').expect(200);
     });
 });
 
-// describe('Test the api/login path', () => {
-//     test('It should respond with the POST method', (done) => {
-//         request(app).get('/api/login').then((response) => {
-//             expect(response.statusCode).toBe(200);
-//             done();
-//         });
-//     });
-// });
+describe('Test the about path', () => {
+    test('It should respond with the GET method', () => {
+        return request(app).get('/about').expect(200);
+    });
+});
 
+describe('Test the api/login path - not logged in', () => {
+    test('It should respond with a 404', () => {
+        return request(app).get('/api/login').expect(404);
+    });
+});
 
 describe('Test the error path', () => {
-    test('It should response the GET method', (done) => {
-        request(app).get('/error').then((response) => {
-            expect(response.statusCode).toBe(404);
-            done();
-        });
+    test('It should respond with the GET method', () => {
+        return request(app).get('/error').expect(404);
     });
 });
 
@@ -50,7 +37,14 @@ describe('Test the api/read path', () => {
     });
 });
 
-
+describe('Test the api/add path', () => {
+    test('It should respond with the POST method', (done) => {
+        request(app).post('/api/add').then((response) => {
+            expect(response.statusCode).toBe(200);
+            done();
+        });
+    });
+});
 
 describe('Test the api/update path', () => {
     test('It should response the PUT method', (done) => {

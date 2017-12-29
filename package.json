@@ -57,6 +57,7 @@
     "stylelint": "^8.4.0",
     "stylelint-config-recommended-scss": "^2.0.0",
     "stylelint-scss": "^2.2.0",
+    "superagent": "^3.8.2",
     "supertest": "^3.0.0"
   },
   "dependencies": {

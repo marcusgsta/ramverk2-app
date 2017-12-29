@@ -91,7 +91,14 @@ Jag använder Jest både för klienten och för backend.
 ## Supertest
 Supertest tar hand om HTTP assertions. Med hjälp av denna testrunner kan jag testa att routerna i backend fungerar som de ska.
 
-
+En fördel med Supertests enhetstester är att de är komprimerade och lättlästa. Ett exempel:
+```
+describe('Test the root path', () => {
+    test('It should response the GET method', () => {
+        return request(app).get('/').expect(200);
+    });
+});
+```
 
 
 # CI
@@ -120,9 +127,13 @@ I Scrutinizer kan man se minor och major issues, bugs och antal procent kodtäck
 
 Realtidsapplikationen är en chatt. Teknikerna jag har använt är modulen socket.io. Denna erbjuder en klient och en server, vilka man sedan jobbar emot och kopplar upp sig med hjälp av.
 
+Socket.io är en wrapper, det vill säga den omsluter realtidsfunktionaliteten och använder den metod den finner bäst för ändamålet. Socket.io är på så sätt ett flexibelt sätt att införliva realtid i en app.
+
 # Database
 
-Databasen Mongodb är en noSQL-dokument-databas som fungerar i JSON och Javascript.
+Dokumentdatabasen Mongodb är en noSQL-dokument-databas som fungerar i JSON och Javascript.
+
+
 
 # Module at npm
 
