@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 "use strict";
-// let _ = require("lodash");
 let express = require("express");
 let path = require("path");
 let bodyParser = require('body-parser');
 
-// let jwt = require("jsonwebtoken");
 let config;
 
 if (process.env.NODE_ENV === 'development') {
@@ -26,7 +24,6 @@ let colName = "users";
 let jwtOptions = {};
 
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
-// jwtOptions.secretOrKey = 'tasmanianDevil';
 jwtOptions.secretOrKey = config.jwtSecret;
 
 let strategy = new JwtStrategy(jwtOptions, function(jwtPayload, next) {
@@ -58,8 +55,7 @@ var update = require(__dirname + '/mongodb/api/update');
 
 // login
 let login = require(__dirname + '/mongodb/api/login');
-let secret = require(__dirname + '/mongodb/api/secret');
-let secretDebug = require(__dirname + '/mongodb/api/secretDebug');
+// let secret = require(__dirname + '/mongodb/api/secret');
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -101,8 +97,7 @@ app.use('/api/add/', add);
 app.use('/api/remove', remove);
 app.use('/api/update', update);
 app.use('/api/login', login);
-app.use('/api/secret', secret);
-app.use('/api/secretdebug', secretDebug);
+// app.use('/api/secret', secret);
 
 
 

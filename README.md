@@ -100,11 +100,12 @@ För build har jag använt Travis. Travis är en Continuous Integration Service,
 
 Travis högkvarter ligger i Berlin, men de har utvecklare över hela världen. Open Source-projekt kan testas gratis, och privata repon mot en avgift.
 
-Travis erbjuder en badge vilken visar om repot har byggts utan fel.
+Travis erbjuder en badge vilken visar om repot har byggts utan fel. Om något är fel så blir badgen röd, det finns inget antingen eller för Travis. Eftersom man vill ha en grön badge så blir det viktigt att fixa varje fel.
 
-## Scrutinizer
-Scrutinizer bygger repot men inkluderar också kodanalys och -täckning. Man får badges vilka på ett tydligt sätt kommunicerar kodens kvalitet.
+## Scrutinizer CI
+Scrutinizer är en kodgranskare används för men inkluderar också kodanalys och -täckning. Man får badges vilka på ett tydligt sätt kommunicerar kodens kvalitet i en rating där 10 är det högsta betyget.
 
+I Scrutinizer kan man se minor och major issues, bugs
 
 
 # Realtime application

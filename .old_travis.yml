@@ -1,9 +1,0 @@
-language: node_js
-node_js:
-  - 9.2.0
-cache:
-  directories:
-    - node_modules
-script:
-  - cd react-scripts && npm run build
-  - npm test
