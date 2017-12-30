@@ -100,6 +100,8 @@ describe('Test the root path', () => {
 });
 ```
 
+Delar av applikationen täcks inte av tester. Mongodb, inloggning, socket.io - chat.
+
 
 # CI
 
@@ -131,7 +133,7 @@ Socket.io är en wrapper, det vill säga den omsluter realtidsfunktionaliteten o
 
 # Database
 
-Dokumentdatabasen Mongodb är en noSQL-dokument-databas som fungerar i JSON och Javascript.
+Dokumentdatabasen Mongodb är en NoSQL-dokument-databas som fungerar i JSON och Javascript.
 
 
 
@@ -148,16 +150,24 @@ med server och klient.
 Det ska gå att skapa en egen användare och att logga in.
 Man kan även redigera sin egen profil.
 
-# Bastekniker och ramverk
-Jag använder mig av Express.js för servern och React.js för klienten.
+
+# Inloggning med JSON
 
 För autentificering används Passport och JWT – JSON Web Token.
+Passport
+
+# Bastekniker och ramverk
+Jag använder mig av Express.js för servern och React.js för klienten.
 
 Express erbjuder ett smidigt sätt för att snabbt skapa en server att utgå ifrån.
 
 React kräver lite mer att sätta sig in i, men fungerar bra och snabbt när man kommit in i det. Något som kan göra det lite mer komplicerat är att man behöver hålla reda på olika versioner, och hålla sig till en.
 
 React Router behövs för att kunna länka dit man vill.
+
+# ES6
+async await
+pilfunktioner
 
 # Utvärdering:
 Express är jag väldigt nöjd med.
@@ -166,5 +176,3 @@ React kan jag ställa mig mer tvivlande till. Det är
 En tanke är att världen för ramverk i Javascript är snabbt föränderlig, och blir därför lätt förvirrande. Det är lätt att förirra sig i olika versioner. Något annat är att det existerar mängder av moduler, på gott och på ont. Jag tror att folk använder mer moduler än vad de behöver, och då är det lätt att mista översikten över vad man håller på med. Om en kodbas använder tjugo olika moduler, så blir det ett slags hopplock, och är det då egentligen programmering man håller på med? Vad händer med säkerheten när man inte känner koden man använder?
 
 Det kan kännas som om mycket av det man lägger tid på är att ha koll på sina moduler och deras versioner, och att de fungerar tillsammans med andra moduler. Detta finns ju normalt som dependencies i modulens package.json-fil.
-
-ES6

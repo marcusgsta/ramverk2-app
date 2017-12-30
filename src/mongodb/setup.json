@@ -1,17 +1,30 @@
 [
     {
-        "name": "Marcus Gustafsson",
-        "nick": "magi16",
-        "gravatar": "my_gravatar"
+        "name": "admin",
+        "nick": "admin",
+        "gravatar": "admin",
+        "role": "admin",
+        "password": "admin"
+    },
+    {
+        "name": "doe",
+        "nick": "doe",
+        "gravatar": "doe",
+        "role": "user",
+        "password": "doe"
     },
     {
         "name": "Anders Gustafsson",
         "nick": "anders16",
-        "gravatar": "my_gravatar"
+        "gravatar": "my_gravatar",
+        "role": "user",
+        "password": "password"
     },
     {
         "name": "Nils Gustafsson",
         "nick": "nils16",
-        "gravatar": "my_gravatar"
+        "gravatar": "my_gravatar",
+        "role": "user",
+        "password": "password"
     }
 ]

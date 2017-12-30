@@ -44,9 +44,9 @@ passport.use(strategy);
 // routes
 var index = require(__dirname + '/routes/index');
 var about = require(__dirname + '/routes/about');
-// var chat = require(__dirname + '/routes/chat');
 
 // mongodb
+var find = require(__dirname + '/mongodb/api/find');
 var read = require(__dirname + '/mongodb/api/read');
 var add = require(__dirname + '/mongodb/api/add');
 var remove = require(__dirname + '/mongodb/api/remove');
@@ -54,7 +54,6 @@ var update = require(__dirname + '/mongodb/api/update');
 
 // login
 let login = require(__dirname + '/mongodb/api/login');
-// let secret = require(__dirname + '/mongodb/api/secret');
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -87,9 +86,10 @@ app.get("/", (req, res, next) => {
 
 app.use('/', index);
 app.use('/about', about);
-// app.use('/chat', chat);
 
 // api routes
+// app.use('/api/find/:id', find);
+app.use('/api/find', find);
 app.use('/api/read', read);
 app.use('/api/add/', add);
 app.use('/api/remove', remove);

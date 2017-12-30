@@ -26,19 +26,27 @@ router.post("/", async (request, response) => {
         let colName = "users";
         let users = await api.findInCollection(colName, criteria, {}, 0);
 
-        console.log(users[0]);
-        console.log(users.length);
         if (users.length !== 0) {
             console.log(users[0].password);
             let user = users[0];
 
-            if (bcrypt.compareSync(password, users[0].password)) {
+            if (bcrypt.compareSync(password, user.password)) {
+                let role = 'user';
+
+                if (user.role === 'admin') {
+                    role = 'admin';
+                }
                 //create JSON web token (JWT)
-                let payload = {'id': user._id};
+                let payload = {'id': user._id, 'role': role};
                 let token = jwt.sign(payload, jwtOptions.secretOrKey);
 
-                console.log("nick", nick);
-                console.log("password", password);
+                // let admin;
+                //
+                // if (nick === 'admin') {
+                //     admin = 'yes';
+                // } else {
+                //     admin = 'no';
+                // }
                 response.json({message: "ok", token: token});
                 // response.json(user);
             }

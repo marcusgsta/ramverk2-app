@@ -14,11 +14,23 @@ describe('Test the about path', () => {
     });
 });
 
-describe('Test the api/login path - not logged in', () => {
-    test('It should respond with a 404', () => {
-        return request(app).get('/api/login').expect(404);
-    });
-});
+// describe('Test the api/login path', () => {
+//     test('It should respond with the POST method', (done) => {
+//         request(app).post('/api/login').then((response) => {
+//             expect(response.statusCode).toBe(200);
+//             done();
+//         });
+//     });
+// });
+
+
+// describe('Test the api/login path', () => {
+//     test('It should response the POST method', async () => {
+//         const response = await request(app).post('/api/login');
+//
+//         expect(response.statusCode).toBe(200);
+//     });
+// });
 
 describe('Test the error path', () => {
     test('It should respond with the GET method', () => {

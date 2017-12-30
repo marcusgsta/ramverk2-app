@@ -15,6 +15,13 @@ router.post("/", async (request, response) => {
         let name = request.body.name;
         let nick = request.body.nick;
         let gravatar = request.body.gravatar;
+        let role;
+
+        if (request.body.role) {
+            role = request.body.role;
+        } else {
+            role = "user";
+        }
 
         let password = request.body.password || 'not';
         let hashPassword = bcrypt.hashSync(password, 10);
@@ -23,15 +30,12 @@ router.post("/", async (request, response) => {
             "name": name,
             "nick": nick,
             "gravatar": gravatar,
-            "password": hashPassword
+            "password": hashPassword,
+            "role": role
         };
         let colName = "users";
         let res = await api.addToCollection(colName, resObject);
 
-        console.log("name", name);
-        console.log("nick", nick);
-        console.log("gravatar", gravatar);
-        console.log("password", password);
         response.json(res);
     } catch (err) {
         console.log(err);

@@ -10,6 +10,12 @@ var router = express.Router();
 
 router.get("/", async (request, response) => {
     try {
+        // console.log("id:", request.params.id);
+        // response.send("id is set to " + request.params.id);
+        // if (request.params.id) {
+        //     criteria = request.params.id;
+        // }
+
         let res = await api.findInCollection("users", {}, {}, 0);
 
         response.json(res);

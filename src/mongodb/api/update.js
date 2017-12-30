@@ -6,6 +6,7 @@ let api = new Api(process.env.DBWEBB_DSN || "mongodb://localhost:27017/app");
 
 var express = require('express');
 var router = express.Router();
+let bcrypt = require('bcrypt');
 
 /* POST mongodb page. */
 
@@ -15,10 +16,13 @@ router.put("/", async (request, response) => {
         var name = request.body.name;
         var nick = request.body.nick;
         var gravatar = request.body.gravatar;
+        let password = request.body.password || 'not';
+        let hashPassword = bcrypt.hashSync(password, 10);
         let resObject = {
             "name": name,
             "nick": nick,
-            "gravatar": gravatar
+            "gravatar": gravatar,
+            "password": hashPassword
         };
         let res = await api.updateItemFromCollection("users", id, resObject);
 
