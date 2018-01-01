@@ -2,28 +2,63 @@
     {
         "name": "admin",
         "nick": "admin",
-        "gravatar": "admin",
+        "email": "admin@email.com",
         "role": "admin",
         "password": "admin"
     },
     {
         "name": "doe",
         "nick": "doe",
-        "gravatar": "doe",
+        "email": "doe@email.com",
         "role": "user",
         "password": "doe"
     },
     {
-        "name": "Anders Gustafsson",
-        "nick": "anders16",
-        "gravatar": "my_gravatar",
+        "name": "Marcus Gustafsson",
+        "nick": "magi16",
+        "email": "marcusgu@hotmail.com",
         "role": "user",
         "password": "password"
     },
     {
         "name": "Nils Gustafsson",
         "nick": "nils16",
-        "gravatar": "my_gravatar",
+        "email": "nils@email.com",
+        "role": "user",
+        "password": "password"
+    },
+    {
+        "name": "Göran Hansson",
+        "nick": "hans16",
+        "email": "goran@email.com",
+        "role": "user",
+        "password": "password"
+    },
+    {
+        "name": "Jan Jansson",
+        "nick": "janne",
+        "email": "jan@email.com",
+        "role": "user",
+        "password": "password"
+    },
+    {
+        "name": "Claes Hansson",
+        "nick": "claes16",
+        "email": "claes@email.com",
+        "role": "user",
+        "password": "password"
+    },
+    {
+        "name": "Mark Twain",
+        "nick": "mark16",
+        "email": "mark@email.com",
+        "role": "user",
+        "password": "password"
+    },
+    {
+        "name": "Marilyn Monroe",
+        "nick": "marilou",
+        "email": "marilou@email.com",
         "role": "user",
         "password": "password"
     }

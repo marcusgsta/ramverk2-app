@@ -6,6 +6,7 @@ let api = new Api(process.env.DBWEBB_DSN || "mongodb://localhost:27017/app");
 let bcrypt = require('bcrypt');
 var express = require('express');
 var router = express.Router();
+// const Functions = require('./functions');
 
 let jwt = require("jsonwebtoken");
 let jwtOptions = {};
@@ -31,13 +32,22 @@ router.post("/", async (request, response) => {
             let user = users[0];
 
             if (bcrypt.compareSync(password, user.password)) {
+                let nick = user.nick;
                 let role = 'user';
+                let email = user.email;
+                let gravatar = user.gravatar;
 
                 if (user.role === 'admin') {
                     role = 'admin';
                 }
                 //create JSON web token (JWT)
-                let payload = {'id': user._id, 'role': role};
+                let payload = {
+                    'id': user._id,
+                    'role': role,
+                    'gravatar': gravatar,
+                    'email': email,
+                    'nick': nick
+                };
                 let token = jwt.sign(payload, jwtOptions.secretOrKey);
 
                 // let admin;

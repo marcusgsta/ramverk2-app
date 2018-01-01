@@ -11,6 +11,11 @@ Clone this repo with
 ```
 git clone https://github.com/marcusgsta/ramverk2-app.git
 ```
+This repo is dependent on a client, install in 'client':
+```
+cd ramverk2-app
+git clone https://github.com/marcusgsta/ramverk2-app.git client
+```
 
 Start Docker container to run Mongodb database, and run in detached mode:
 

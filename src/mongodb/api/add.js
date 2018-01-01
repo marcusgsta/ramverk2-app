@@ -4,6 +4,7 @@
 let Api = require('@marcusgsta/mongodb-api');
 let api = new Api(process.env.DBWEBB_DSN || "mongodb://localhost:27017/app");
 let bcrypt = require('bcrypt');
+const Functions = require('../../functions');
 
 var express = require('express');
 var router = express.Router();
@@ -14,7 +15,8 @@ router.post("/", async (request, response) => {
     try {
         let name = request.body.name;
         let nick = request.body.nick;
-        let gravatar = request.body.gravatar;
+        let email = request.body.email;
+        let gravatar = Functions.makeGravatar(email);
         let role;
 
         if (request.body.role) {
@@ -29,6 +31,7 @@ router.post("/", async (request, response) => {
         let resObject = {
             "name": name,
             "nick": nick,
+            "email": email,
             "gravatar": gravatar,
             "password": hashPassword,
             "role": role

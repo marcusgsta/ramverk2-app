@@ -81,7 +81,7 @@ app.use((req, res, next) => {
 // Catch all, send react app via index.html if no previous match
 app.get("/", (req, res, next) => {
     // Path to index.html in client build directory
-    res.sendFile(path.join(__dirname + '/../react-frontend/build/index.html'));
+    res.sendFile(path.join(__dirname + '/../client/build/index.html'));
 });
 
 app.use('/', index);
