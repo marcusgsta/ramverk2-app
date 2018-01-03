@@ -17,6 +17,15 @@ cd ramverk2-app
 git clone https://github.com/marcusgsta/ramverk2-app.git client
 ```
 
+Install Docker:
+```
+install it
+```
+Alternatively you can install mongodb
+```
+sudo apt-get install -y mongodb
+```
+
 Start Docker container to run Mongodb database, and run in detached mode:
 
 ```
@@ -31,7 +40,7 @@ cd client && npm install && npm run build
 
 Start with
 ```
-npm npm start
+npm start
 ```
 
 Optional: Set port (default: 1337)
