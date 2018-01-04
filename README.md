@@ -1,3 +1,10 @@
+<style>
+ img[alt=main] {
+     float: right;
+     border:1px solid white;
+ }
+</style>
+
 # React & Express Chat
 
 [![Build Status](https://travis-ci.org/marcusgsta/ramverk2-app.svg?branch=master)](https://travis-ci.org/marcusgsta/ramverk2-app)
@@ -6,7 +13,7 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
 
 <a href="http://chat-bth.space">
-<img style="float: right;" src="/public/img/react-chat.png" />
+<img alt="main" src="/public/img/react-chat.png" />
 </a>
 
 # React-Express-chat – a chat server made in Nodejs, Express and Mongodb
