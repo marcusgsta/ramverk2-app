@@ -1,14 +1,16 @@
+# React & Express Chat
+
 [![Build Status](https://travis-ci.org/marcusgsta/ramverk2-app.svg?branch=master)](https://travis-ci.org/marcusgsta/ramverk2-app)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/build.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
 
 <a href="http://chat-bth.space">
-<img src="/public/img/react-chat.png" style="float:'right'; width:'50px';" />
+<img style="float: right;" src="/public/img/react-chat.png" />
 </a>
 
-# Ramverk2-app – a server made in Nodejs and Express
-This repo is dependent on the repo for the client: https://github.com/marcusgsta/react-client.git
+# React-Express-chat – a chat server made in Nodejs, Express and Mongodb
+This repo is dependent on the repo for the chat client: https://github.com/marcusgsta/react-client.git
 
 # Table of Contents
 - [Setup](#setup)
