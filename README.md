@@ -2,7 +2,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/build.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
-# Ramverk2-app – with react-frontend and express-backend
+# Ramverk2-app – server made with Express.js, and client in React.js
 
 # Install
 
@@ -55,7 +55,7 @@ To start with an empty database try mongodb://localhost:27017/test
 DBWEBB_DSN=YOUR_DSN_ADRESS
 ```
 
-To reset database – erase all and fill with default data:
+To reset database – erase all and fill with default users:
 ```
 npm run reset-database
 ```
@@ -91,7 +91,39 @@ This will take some time. When the unit tests are done you will need to press 'Q
 
 The following text is in Swedish.
 
-# Verktyg använda för enhetstester
+
+# Kravbild för projekt
+
+## Grund
+En chatt där man kan skapa en egen användare, med namn, nick, email och lösenord. Från epostadressen genereras en gravatar från https://sv.gravatar.com/. Om man inte har konto där så visas ändå upp en genererad unik bild för varje användare.
+
+Startsidan är en chatt. Om man inte är inloggad skickas man till inloggninssidan för att skriva in sina uppgifter. Om de är korrekta sänds man tillbaka till startsidan, eller sidan man ville visa.
+
+Appen innehåller en om-sida med kort information om projektet.
+
+Applikationen har ett snygg och tydligt gränssnitt som är lätt att använda och interagera med. När en användare skriver något, visas ett meddelande 'x skriver ett meddelande'. Alla användares bilder visas på startsidan, och med hjälp av en snygg tooltip-funktion kan man genom att hovra över dem visa deras uppgifter.
+
+Enkla ikoner utgör de olika menyvalen.
+
+I chatten så är input-fältet alltid aktivt, vilket gör att man inte behöver aktivera det, något som gör att appen blir lättare att använda. Det besparar antal klick och interaktioner.
+
+Det ska fungera på nyare mobiler och andra enheter.
+
+Projektet fungerar antingen med en Mongodb-installation eller med Mongodb som Docker-image.
+
+Den ska fungera responsivt i de vanligaste enheterna, datorer, surfplattor och mobiler.
+
+Chatfönstret ska rullas upp efterhand så att de senaste meddelandena alltid är synliga, och man inte behöver scrolla.
+
+
+## Admin
+
+Appen innehåller också administrationssidor. En administratör kan logga in. Vid reset av databas finns en förinställd administratör som har användarnamn 'admin' och lösenord 'admin', för testning. Administratören kan uppdatera och ta bort användare.
+
+Finns att testa på chat-bth.space.
+
+
+# Verktyg som används för enhetstester
 
 ## Jest
 Klienten är scaffoldad fram med hjälp av modulen create-react-app, vilken skapar en utgångspunkt för en React-app.
@@ -145,9 +177,13 @@ Realtidsapplikationen är en chatt. Teknikerna jag har använt är modulen socke
 
 Socket.io är en wrapper, det vill säga den omsluter realtidsfunktionaliteten och använder den metod den finner bäst för ändamålet. Socket.io är på så sätt ett flexibelt sätt att införliva realtid i en app.
 
-# Database
+# Databas
 
 Dokumentdatabasen Mongodb är en NoSQL-dokument-databas som fungerar i JSON och Javascript.
+Det är en dokumentdatabas där data lagras i JSON-filer. För att få det att fungera behöver man installera Mongodb enligt anvisningar på deras sida. I paketet ingår en klient, med vilken man kan koppla upp sig och interagera med databasen. För applikationen jag har byggt behövs en Nodejs-driver, det vill säga en klient vilken jag har installerat på server-sidan. Användaren kan interagera med React-klientens formulär. Formuläret sänder förfrågningar om CRUD-operationer till servern, och alltså till databas-klienten, vilken i sin tur kopplar upp sig mot appens databasinstans.
+
+# Docker
+För att lägga på ännu ett lager finns möjligheten att köra Mongodb via Docker. Det vill säga det finns en Docker-image med en version av Nodejs, vilken kan starta och köra appen. Det finns också möjlighet att med hjälp av olika Docker-containrar testa applikationen, så som beskrivet ovan.
 
 
 
@@ -156,19 +192,28 @@ Dokumentdatabasen Mongodb är en NoSQL-dokument-databas som fungerar i JSON och 
 Modulen mongodb-api är ett litet api med standard CRUD-funktioner, det vill säga Create, Read, Update och Delete, riktat mot en Mongodb-databas. Man laddar ner det från npm, och skapar ett objekt.
 
 Länk:
-
-# Kravbild
-
-Projektet innebär en chatt
-med server och klient.
-Det ska gå att skapa en egen användare och att logga in.
-Man kan även redigera sin egen profil.
+[!mongodb-api på npm](https://www.npmjs.com/package/@marcusgsta/mongodb-api)
 
 
-# Inloggning med JSON
+
+# Artikel: Inloggning med JSON
 
 För autentificering används Passport och JWT – JSON Web Token.
 Passport
+
+
+# Artikel: React.js
+
+Reactjs är ett bibliotekt/ramverk som används för att bygga dynamiska user interfaces (användargränssnitt). Man säger att det är V:et i MVC, alltså vyn. Det är frikopplat från en eventuell serverdel, och därför kompatibelt med olika typ av servrar.
+
+## Komponenter
+
+## Virtual DOM
+Reactjs använder Virtual DOM. Det abstraherar DOM och skapar en kopia. Denna kopia jämförs med originalet och vid en omladdning av någon komponents state behöver inte hela sidan laddas om. Det är enbart ändringarna som laddas igen, något som gör att gränssnittet känns snabbt och smidigt.
+
+## Nackdelar
+Reactjs är fortfarande relativt nytt, och förändringstakten är därför hög. Exempelvis när det gäller React Router, en separat modul men som rekommenderas av React, så har man nyligen uppdaterat sin kod, vilket gör det mer komplicerat att hitta rätt information. Mycket av frågor och svar på StackOverflow, till exempel, blir snabbt föråldrad, och det är lätt att trampa fel och bli tvungen att göra om.
+
 
 # Bastekniker och ramverk
 Jag använder mig av Express.js för servern och React.js för klienten.
@@ -178,6 +223,8 @@ Express erbjuder ett smidigt sätt för att snabbt skapa en server att utgå ifr
 React kräver lite mer att sätta sig in i, men fungerar bra och snabbt när man kommit in i det. Något som kan göra det lite mer komplicerat är att man behöver hålla reda på olika versioner, och hålla sig till en.
 
 React Router behövs för att kunna länka dit man vill.
+
+
 
 # ES6
 async await
@@ -190,3 +237,13 @@ React kan jag ställa mig mer tvivlande till. Det är
 En tanke är att världen för ramverk i Javascript är snabbt föränderlig, och blir därför lätt förvirrande. Det är lätt att förirra sig i olika versioner. Något annat är att det existerar mängder av moduler, på gott och på ont. Jag tror att folk använder mer moduler än vad de behöver, och då är det lätt att mista översikten över vad man håller på med. Om en kodbas använder tjugo olika moduler, så blir det ett slags hopplock, och är det då egentligen programmering man håller på med? Vad händer med säkerheten när man inte känner koden man använder?
 
 Det kan kännas som om mycket av det man lägger tid på är att ha koll på sina moduler och deras versioner, och att de fungerar tillsammans med andra moduler. Detta finns ju normalt som dependencies i modulens package.json-fil.
+
+
+till redovisning:
+Jag anser det värt 5 poäng att ha satt mitt projekt i drift.
+Hur?
+Jag har laddat upp på digital ocean, och där använt en Apache-server och virtual hosts. Jag behövde använde virtual hosts eftersom jag redan har ett php-projekt där. Jag behövde också en modul, mod_proxy, för att kunna driva en nodejs-app. Med hjälp av modulen kan jag använda en reverse-proxy vilken skickar inkommande anrop till chat-bth.space på port 80 till porten som min Express-app körs på, 1337.
+
+Jag anser det också vara värt minst 5 poäng att jag använder Reactjs för klienten. Jag har lärt mig mycket på detta. Det är ju inte enbart så att ett ramverk förenklar saker. Det krävdes mycket tid sätta mig in i ramverket. Det är ett eget sätt att tänka. Man behöver göra allt på React-sättet. Jag använder React-router, inloggning för React, med JWT, JSON Web Token. Det var många nya tekniker för att göra sånt som jag hade kunskap om på andra håll - php, python, vanilla javascript. Så vad är då fördelen? React ska vara snabbare? Istället för att manipulera DOM-trädet så manipuleras man Virtual DOM. Det resulterar i färre omladdningar av sidan.
+
+En utvärdering av Reactjs. En annan grundtanke är att man ska kunna använda komponenter för att bygga sina sidor. De som förespråkar detta menar att det är detta som är framtiden. Komponenter är testbara. De är också återanvändbara. React bryter mot och argumenterar mot en gammal regel inom webdesign, nämligen att skilja mellan html och javascript. JSX.
