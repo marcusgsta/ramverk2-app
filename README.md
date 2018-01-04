@@ -2,25 +2,42 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/build.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
-# Ramverk2-app – server made with Express.js, and client in React.js
 
-# Install
 
-Clone this repo with
+<img src="/public/img/react-chat.png" style="float:'right'; width:'50px';"/>
 
+# Ramverk2-app – a server made in Nodejs and Express
+This repo is dependent on the repo for the client: https://github.com/marcusgsta/react-client.git
+
+# Table of Contents
+- [Setup](Setup)
+- Available Scripts
+  - [npm install](#npm-install)
+  - [npm start](#npm-start)
+  - [npm run start-dev](#npm-install)
+  - [npm run start-docker](#npm-run-start-docker)
+
+
+# Setup
+
+Clone repo:
 ```
 git clone https://github.com/marcusgsta/ramverk2-app.git
 ```
-This repo is dependent on a client, install in 'client':
+
+Clone client repo in directory 'client':
 ```
 cd ramverk2-app
-git clone https://github.com/marcusgsta/ramverk2-app.git client
+git clone https://github.com/marcusgsta/react-client.git client
 ```
 
-Install Docker:
+Choose either to install Docker och Mongodb
+
+Install Docker according to your operating system:
 ```
-install it
+https://docs.docker.com/engine/installation/
 ```
+
 Alternatively you can install mongodb
 ```
 sudo apt-get install -y mongodb
@@ -238,12 +255,5 @@ En tanke är att världen för ramverk i Javascript är snabbt föränderlig, oc
 
 Det kan kännas som om mycket av det man lägger tid på är att ha koll på sina moduler och deras versioner, och att de fungerar tillsammans med andra moduler. Detta finns ju normalt som dependencies i modulens package.json-fil.
 
-
-till redovisning:
-Jag anser det värt 5 poäng att ha satt mitt projekt i drift.
-Hur?
-Jag har laddat upp på digital ocean, och där använt en Apache-server och virtual hosts. Jag behövde använde virtual hosts eftersom jag redan har ett php-projekt där. Jag behövde också en modul, mod_proxy, för att kunna driva en nodejs-app. Med hjälp av modulen kan jag använda en reverse-proxy vilken skickar inkommande anrop till chat-bth.space på port 80 till porten som min Express-app körs på, 1337.
-
-Jag anser det också vara värt minst 5 poäng att jag använder Reactjs för klienten. Jag har lärt mig mycket på detta. Det är ju inte enbart så att ett ramverk förenklar saker. Det krävdes mycket tid sätta mig in i ramverket. Det är ett eget sätt att tänka. Man behöver göra allt på React-sättet. Jag använder React-router, inloggning för React, med JWT, JSON Web Token. Det var många nya tekniker för att göra sånt som jag hade kunskap om på andra håll - php, python, vanilla javascript. Så vad är då fördelen? React ska vara snabbare? Istället för att manipulera DOM-trädet så manipuleras man Virtual DOM. Det resulterar i färre omladdningar av sidan.
 
 En utvärdering av Reactjs. En annan grundtanke är att man ska kunna använda komponenter för att bygga sina sidor. De som förespråkar detta menar att det är detta som är framtiden. Komponenter är testbara. De är också återanvändbara. React bryter mot och argumenterar mot en gammal regel inom webdesign, nämligen att skilja mellan html och javascript. JSX.
