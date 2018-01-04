@@ -3,14 +3,15 @@
 [![Build Status](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/build.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
 
-
-<img src="/public/img/react-chat.png" style="float:'right'; width:'50px';"/>
+<a href="http://chat-bth.space">
+<img src="/public/img/react-chat.png" style="float:'right'; width:'50px';" />
+</a>
 
 # Ramverk2-app – a server made in Nodejs and Express
 This repo is dependent on the repo for the client: https://github.com/marcusgsta/react-client.git
 
 # Table of Contents
-- [Setup](Setup)
+- [Setup](#setup)
 - Available Scripts
   - [npm install](#npm-install)
   - [npm start](#npm-start)
@@ -18,7 +19,7 @@ This repo is dependent on the repo for the client: https://github.com/marcusgsta
   - [npm run start-docker](#npm-run-start-docker)
 
 
-# Setup
+## Setup
 
 Clone repo:
 ```
@@ -49,6 +50,7 @@ Start Docker container to run Mongodb database, and run in detached mode:
 npm run start-docker
 ```
 
+### `npm install`
 Install:
 ```
 npm install
