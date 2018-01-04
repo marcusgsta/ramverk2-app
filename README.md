@@ -1,57 +1,73 @@
-<style>
- img[alt=main] {
-     float: right;
-     border:1px solid white;
- }
-</style>
-
 # React & Express Chat
+
+<a href="http://chat-bth.space">
+<img alt="main" src="/public/img/react-chat.png" />
+</a>
 
 [![Build Status](https://travis-ci.org/marcusgsta/ramverk2-app.svg?branch=master)](https://travis-ci.org/marcusgsta/ramverk2-app)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/build.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/marcusgsta/ramverk2-app/?branch=master)
 
-<a href="http://chat-bth.space">
-<img alt="main" src="/public/img/react-chat.png" />
-</a>
-
-# React-Express-chat – a chat server made in Nodejs, Express and Mongodb
+# Chat server
 This repo is dependent on the repo for the chat client: https://github.com/marcusgsta/react-client.git
+
+made with sockets.io, Node, Express and Mongodb
 
 # Table of Contents
 - [Setup](#setup)
-- Available Scripts
-  - [npm install](#npm-install)
-  - [npm start](#npm-start)
-  - [npm run start-dev](#npm-install)
-  - [npm run start-docker](#npm-run-start-docker)
+  - [Clone projects](#clone-projects)
+  - [Install Mongodb / Docker](#install-mongodb-or-docker)
+- [Install](#install-and-build-server-and-client)
+  - [Start Docker](#start-docker)
+  - [Start Application](#start-application)
+  - [Optional: Set port and DSN](#optional:-set-port-and-dsn)
+  - [Reset Database](#reset-database)
+  - [Test](#test)
 
 
 ## Setup
 
-Clone repo:
+### Clone projects
+
+Clone server:
+
 ```
 git clone https://github.com/marcusgsta/ramverk2-app.git
 ```
 
 Clone client repo in directory 'client':
+
 ```
 cd ramverk2-app
 git clone https://github.com/marcusgsta/react-client.git client
 ```
 
-Choose either to install Docker och Mongodb
+### Install Mongodb or Docker
+
+Choose either to install Docker or Mongodb.
 
 Install Docker according to your operating system:
-```
-https://docs.docker.com/engine/installation/
-```
+[Docker Installation pages](https://docs.docker.com/engine/installation/)
 
-Alternatively you can install mongodb
+Alternatively you can install Mongodb:
 ```
 sudo apt-get install -y mongodb
 ```
+
+## Install and build server and client
+
+Install the server.
+```
+npm install
+```
+
+Install and build the client.
+```
+cd client && npm install && npm run build
+```
+
+## Start Docker
 
 Start Docker container to run Mongodb database, and run in detached mode:
 
@@ -59,29 +75,32 @@ Start Docker container to run Mongodb database, and run in detached mode:
 npm run start-docker
 ```
 
-### `npm install`
-Install:
-```
-npm install
-cd client && npm install && npm run build
-```
+Alternatively start your Mongodb installation.
 
-Start with
+
+## Start Application:
+
 ```
 npm start
 ```
+Runs the app in production mode.
 
-Optional: Set port (default: 1337)
+## Optional: Set port and DSN
+Default: 1337
 ```
 DBWEBB_PORT=PORT_NUMBER
 ```
 
-Optional: Set DSN (default: mongodb://localhost:27017/math)
-Points to your mongodb database.
+## Optional: Set DSN
+Default: mongodb://localhost:27017/math
+
+Points to your Mongodb database.
 To start with an empty database try mongodb://localhost:27017/test
 ```
 DBWEBB_DSN=YOUR_DSN_ADRESS
 ```
+
+## Reset Database
 
 To reset database – erase all and fill with default users:
 ```
@@ -94,7 +113,7 @@ After exiting you might want to remove the Docker container:
 npm run stop-docker
 ```
 
-# Test
+## Test
 
 Test repos with
 ```
@@ -118,6 +137,18 @@ This will take some time. When the unit tests are done you will need to press 'Q
 
 
 The following text is in Swedish.
+
+# Innehållsförteckning
+- [Kravbild](#kravbild-för-projekt)
+  - [Grund](#grund)
+  - [Admin](#admin)
+  - [Install Mongodb / Docker](#install-mongodb-or-docker)
+- [Install](#install-and-build-server-and-client)
+  - [Start Docker](#start-docker)
+  - [Start Application](#start-application)
+  - [Optional: Set port and DSN](#optional:-set-port-and-dsn)
+  - [Reset Database](#reset-database)
+  - [Test](#test)
 
 
 # Kravbild för projekt
@@ -233,6 +264,15 @@ Passport
 # Artikel: React.js
 
 Reactjs är ett bibliotekt/ramverk som används för att bygga dynamiska user interfaces (användargränssnitt). Man säger att det är V:et i MVC, alltså vyn. Det är frikopplat från en eventuell serverdel, och därför kompatibelt med olika typ av servrar.
+
+Although some would argue that all projects need React, I think it’s uncontroversial to say that React would be a great fit for web apps where you need to keep a complex, interactive UI in sync with frequent changes in the underlying data model.
+https://www.sitepoint.com/react-fast-interactive-user-interfaces/
+Lots of state management and DOM manipulation. That is, enabling and disabling buttons, making links active, changing input values, closing and expanding menus, etc. In this kind of project, React makes managing stateful components faster and easier. As Michael Jackson, co-author of React Router, aptly put it in a Tweet:
+Point is, React takes care of the hard part of figuring out what changes actually need to happen to the DOM, not me. That’s *invaluable*
+
+Fighting spaghetti. Keeping track of complex state by directly modifying the DOM could lead to spaghetti code, at least if extra attention isn’t paid to code organization and structure.
+
+bridge the gap between web apps and native apps: users expect web apps to feel smooth and seamless like native apps.
 
 ## Komponenter
 
