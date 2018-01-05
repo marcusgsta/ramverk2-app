@@ -21,9 +21,10 @@ made with sockets.io, Node, Express and Mongodb
 - [Install](#install-and-build-server-and-client)
   - [Start Docker](#start-docker)
   - [Start Application](#start-application)
-  - [Optional: Set port and DSN](#optional:-set-port-and-dsn)
+  - [Set port](#set-port)
   - [Reset Database](#reset-database)
   - [Test](#test)
+- [Developer Mode](#developer-mode)
 
 
 ## Setup
@@ -85,13 +86,13 @@ npm start
 ```
 Runs the app in production mode.
 
-## Optional: Set port and DSN
+## Set port
 Default: 1337
 ```
 DBWEBB_PORT=PORT_NUMBER
 ```
 
-## Optional: Set DSN
+## Set DSN
 Default: mongodb://localhost:27017/math
 
 Points to your Mongodb database.
@@ -118,7 +119,7 @@ npm run stop-docker
 Test repos with
 ```
 npm test # for backend tests
-npm client/test # for client tests
+cd client && npm test # for client tests
 ```
 
 Check code coverage locally (or open file in browser):
@@ -135,6 +136,13 @@ npm run test-docker2 # for node 9
 ```
 This will take some time. When the unit tests are done you will need to press 'Q' to leave the Jest CLI and proceed with code coverage as a last step.
 
+## Developer Mode
+
+### Start developer mode
+```
+npm run start-dev
+```
+
 
 The following text is in Swedish.
 
@@ -142,13 +150,10 @@ The following text is in Swedish.
 - [Kravbild](#kravbild-för-projekt)
   - [Grund](#grund)
   - [Admin](#admin)
-  - [Install Mongodb / Docker](#install-mongodb-or-docker)
-- [Install](#install-and-build-server-and-client)
-  - [Start Docker](#start-docker)
-  - [Start Application](#start-application)
-  - [Optional: Set port and DSN](#optional:-set-port-and-dsn)
-  - [Reset Database](#reset-database)
-  - [Test](#test)
+- [Verktyg för enhetstester](#verktyg-för-enhetstester)
+  - [Jest](#jest)
+  - [Supertest](#supertest)
+
 
 
 # Kravbild för projekt
@@ -182,7 +187,7 @@ Appen innehåller också administrationssidor. En administratör kan logga in. V
 Finns att testa på chat-bth.space.
 
 
-# Verktyg som används för enhetstester
+# Verktyg för enhetstester
 
 ## Jest
 Klienten är scaffoldad fram med hjälp av modulen create-react-app, vilken skapar en utgångspunkt för en React-app.
@@ -208,7 +213,7 @@ describe('Test the root path', () => {
 Delar av applikationen täcks inte av tester. Mongodb, inloggning, socket.io - chat.
 
 
-# CI
+## Continuous Integration
 
 De båda repona är integrerade med Continuous Integration. För varje uppladdning på Github så byggs och testas repona i Travis och Scrutinizer.
 I filen .env.development definieras NODE_ENV=development. Detta utnyttjar jag för att veta vilken config.js jag använder mig av, något som är aktuellt för JWT och autentificering. På så vis behöver jag inte göra den skyddade config-filen offentlig.
@@ -251,9 +256,14 @@ För att lägga på ännu ett lager finns möjligheten att köra Mongodb via Doc
 Modulen mongodb-api är ett litet api med standard CRUD-funktioner, det vill säga Create, Read, Update och Delete, riktat mot en Mongodb-databas. Man laddar ner det från npm, och skapar ett objekt.
 
 Länk:
-[!mongodb-api på npm](https://www.npmjs.com/package/@marcusgsta/mongodb-api)
+[mongodb-api på npm](https://www.npmjs.com/package/@marcusgsta/mongodb-api)
 
 
+
+# Driftssättning
+
+Jag har laddat upp på digital ocean, och där använt Apache-server och Virtual Hosts. Jag behövde använde Virtual
+Hosts eftersom jag redan har ett php-projekt där. Jag behövde också en modul, mod_proxy, för att kunna driva en nodejs-app. Med hjälp av modulen kan jag använda en reverse-proxy vilken skickar inkommande anrop till chat-bth.space på port 80 till porten som min Express-app körs på, 1337.
 
 # Artikel: Inloggning med JSON
 
@@ -273,6 +283,9 @@ Point is, React takes care of the hard part of figuring out what changes actuall
 Fighting spaghetti. Keeping track of complex state by directly modifying the DOM could lead to spaghetti code, at least if extra attention isn’t paid to code organization and structure.
 
 bridge the gap between web apps and native apps: users expect web apps to feel smooth and seamless like native apps.
+
+Så vad är då fördelen? React ska vara snabbare? Istället för att manipulera DOM-trädet så manipuleras man Virtual DOM. Det resulterar i färre omladdningar av sidan.
+
 
 ## Komponenter
 
