@@ -165,7 +165,7 @@ The following text is in Swedish.
 - [NPM-modul](#npm-modul)
 - [Driftssättning](#driftssättning)
 - [Artikel: JSON Web Token](#artikel-json-web-token)
-- [Artikel: Reactjs](#artikel:-reactjs)
+- [Artikel: Reactjs](#artikel-reactjs)
 
 # Kravbild för projekt
 
@@ -404,7 +404,7 @@ localStorage.setItem('token', data.token);
 ```
 
 
-# Artikel: React.js
+# Artikel: Reactjs
 
 Reactjs är ett bibliotek/ramverk som används för att skapa dynamiska user interfaces (användargränssnitt). Man säger att det är V:et i MVC, alltså vyn. Det är frikopplat från en serverdel, och därför kompatibelt med olika typ av servrar.
 
