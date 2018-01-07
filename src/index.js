@@ -46,7 +46,7 @@ var index = require(__dirname + '/routes/index');
 var about = require(__dirname + '/routes/about');
 
 // mongodb
-var find = require(__dirname + '/mongodb/api/find');
+// var find = require(__dirname + '/mongodb/api/find');
 var read = require(__dirname + '/mongodb/api/read');
 var add = require(__dirname + '/mongodb/api/add');
 var remove = require(__dirname + '/mongodb/api/remove');
@@ -88,8 +88,37 @@ app.use('/', index);
 app.use('/about', about);
 
 // api routes
-// app.use('/api/find/:id', find);
-app.use('/api/find', find);
+// app.use('/api/find/:nick', find);
+// app.use('/api/find/', find);
+app.get("/api/find/:nick", async (request, response) => {
+    try {
+        console.log("nick:", request.params.nick);
+        // response.send("nick is set to " + request.params.nick);
+        let criteria = {};
+
+        if (request.params.nick) {
+            criteria = {nick: request.params.nick};
+        }
+
+        let res = await api.findInCollection("users", criteria, {}, 4);
+
+        let newRes = res.map(function(user) {
+            let returnedUser = [user.nick, user.name, user.email];
+
+            return returnedUser;
+        });
+
+        console.log(newRes);
+        //response.send(newRes);
+        response.json(newRes);
+        // response.json(res);
+    } catch (err) {
+        console.log(err);
+        response.json(err);
+    }
+});
+
+
 app.use('/api/read', read);
 app.use('/api/add/', add);
 app.use('/api/remove', remove);

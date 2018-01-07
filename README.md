@@ -172,6 +172,8 @@ The following text is in Swedish.
 ## Grund
 Är en realtids-chatt där man kan skapa en egen användare, med namn, nick, email och lösenord. Från epostadressen genereras en gravatar från https://sv.gravatar.com/. Om man inte har konto där så visas ändå upp en genererad unik bild för varje användare.
 
+Nick får inte redan existera i databasen, om det gör det ombeds man välja ett annat nick. 
+
 Startsidan är en chatt. Om man inte är inloggad skickas man till inloggninssidan för att skriva in sina uppgifter. Om de är korrekta sänds man tillbaka till startsidan, eller sidan man ville visa.
 
 Appen innehåller en om-sida med kort information om projektet.
@@ -330,8 +332,7 @@ En fördel är att man kan sända med till exempel alla uppgifter om en använda
 
 ## Nackdelar
 
-Exempel för Express.js, med Passport.
-JWT är inte helt säkert.?
+Om man jämför med att använda sessions på serversidan så kan man i korta drag säga att sessions är säkrare än JWT. Det senare behöver sändas över internet, och kan därför plockas upp på vägen, eventuellt avkrypteras och redigeras. Det kan gälla att sätta 'admin' till 'true', eller annat. Även om den hemliga nyckeln behövs, så finns ändå denna möjliga säkerhetslucka.
 
 ## JWT och Node.js
 

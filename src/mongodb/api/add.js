@@ -36,6 +36,7 @@ router.post("/", async (request, response) => {
             "password": hashPassword,
             "role": role
         };
+
         let colName = "users";
         let res = await api.addToCollection(colName, resObject);
 
