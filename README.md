@@ -170,11 +170,11 @@ The following text is in Swedish.
 # Kravbild för projekt
 
 ## Grund
-Är en realtids-chatt där man kan skapa en egen användare, med namn, nick, email och lösenord. Från epostadressen genereras en gravatar från https://sv.gravatar.com/. Om man inte har konto där så visas ändå upp en genererad unik bild för varje användare.
+Projektet är en realtids-chatt där man kan skapa en egen användare, med namn, nick, email och lösenord. Från epostadressen genereras en gravatar från https://sv.gravatar.com/. Om man inte har konto där så visas ändå upp en genererad unik bild för varje användare.
 
-Nick får inte redan existera i databasen, om det gör det ombeds man välja ett annat nick. 
+Nick får inte redan existera i databasen, om det gör det ombeds man välja ett annat nick.
 
-Startsidan är en chatt. Om man inte är inloggad skickas man till inloggninssidan för att skriva in sina uppgifter. Om de är korrekta sänds man tillbaka till startsidan, eller sidan man ville visa.
+Startsidan är en chatt. Om man inte är inloggad skickas man till inloggningssidan för att skriva in sina uppgifter. Om de är korrekta sänds man tillbaka till startsidan, eller sidan man ville visa.
 
 Appen innehåller en om-sida med kort information om projektet.
 
@@ -504,4 +504,5 @@ Reactjs släpptes 2013 och är fortfarande relativt nytt. Förändringstakten ä
 En annan nackdel tycker jag är att det tar lite tid att komma in i. Jag tror det kan handla om att vänja sig vid att tänka på ett annat sätt. Det skiljer sig och bryter mot tidigare 'regler' inom webdesign, som att blanda samman html och javascript i sina komponenter. Detta har varit en helig ko, att blanda presentation och beteende, när det gäller standardiseringen av webben. Nu ser det ut som om webbvärlden har varit på väg bort från detta tänkande, och istället vill organisera sina webbsidor och -appar i komponenter som ska innehålla allt de behöver. En fördel med att även baka in CSS-kod i komponenterna är att man slipper problemet med selektorer som kommer i konflikt med varandra utanför komponenten. En tanke med komponenter är att kunna använda dem som 'widgets', vilka innehåller allt de behöver i sig själv. Det vill säga att lättare kunna inkludera widgets med olika typer av funktionalitet i sina applikationer.
 
 Exempel på komponentbibliotek: [https://devarchy.com/react](https://devarchy.com/react)
+
 En kalenderwidget: https://jquense.github.io/react-widgets/api/Calendar/
